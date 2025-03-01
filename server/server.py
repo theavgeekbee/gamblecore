@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import yfinance as yf
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -14,9 +15,11 @@ def get_stock_data():
     if not ticker:
         return jsonify({"error": "Ticker symbol is required"}), 400
 
+    end_date = datetime.today() - timedelta(days=5)
+
     stock = yf.Ticker(ticker)
     stock_info = stock.info
-    hist = stock.history(period="5d", interval="1m")
+    hist = stock.history(period="5d", interval="1m", end=end_date.timestamp())
 
     historical_data = [
             {"open": row["Open"], "high": row["High"], "low": row["Low"], "close": row["Close"]}
