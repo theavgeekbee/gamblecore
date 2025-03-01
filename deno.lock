@@ -6,9 +6,11 @@
     "npm:@types/node@20": "20.17.17",
     "npm:@types/react-dom@19": "19.0.4_@types+react@19.0.10",
     "npm:@types/react@19": "19.0.10",
+    "npm:chart.js@^4.4.8": "4.4.8",
     "npm:eslint-config-next@15.2.0": "15.2.0_eslint@9.21.0_typescript@5.7.3_@typescript-eslint+parser@8.25.0__eslint@9.21.0__typescript@5.7.3_eslint-plugin-import@2.31.0__eslint@9.21.0",
     "npm:eslint@9": "9.21.0",
     "npm:next@15.2.0": "15.2.0_react@19.0.0_react-dom@19.0.0__react@19.0.0",
+    "npm:react-chartjs-2@^5.3.0": "5.3.0_chart.js@4.4.8_react@19.0.0",
     "npm:react-dom@19": "19.0.0_react@19.0.0",
     "npm:react@19": "19.0.0",
     "npm:tailwindcss@4": "4.0.9",
@@ -177,6 +179,9 @@
     },
     "@img/sharp-win32-x64@0.33.5": {
       "integrity": "sha512-MpY/o8/8kj+EcnxwvrP4aTJSWw/aZ7JIGR4aBeZkZw5B7/Jn+tY9/VNwtcoGmdT7GfggGIU4kygOMSbYnOrAbg=="
+    },
+    "@kurkle/color@0.3.4": {
+      "integrity": "sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w=="
     },
     "@next/env@15.2.0": {
       "integrity": "sha512-eMgJu1RBXxxqqnuRJQh5RozhskoNUDHBFybvi+Z+yK9qzKeG7dadhv/Vp1YooSZmCnegf7JxWuapV77necLZNA=="
@@ -613,6 +618,12 @@
       "dependencies": [
         "ansi-styles",
         "supports-color"
+      ]
+    },
+    "chart.js@4.4.8": {
+      "integrity": "sha512-IkGZlVpXP+83QpMm4uxEiGqSI7jFizwVtF3+n5Pc3k7sMO+tkd0qxh2OzLhenM0K80xtmAONWGBn082EiBQSDA==",
+      "dependencies": [
+        "@kurkle/color"
       ]
     },
     "client-only@0.0.1": {
@@ -1768,6 +1779,13 @@
     "queue-microtask@1.2.3": {
       "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="
     },
+    "react-chartjs-2@5.3.0_chart.js@4.4.8_react@19.0.0": {
+      "integrity": "sha512-UfZZFnDsERI3c3CZGxzvNJd02SHjaSJ8kgW1djn65H1KK8rehwTjyrRKOG3VTMG8wtHZ5rgAO5oTHtHi9GCCmw==",
+      "dependencies": [
+        "chart.js",
+        "react"
+      ]
+    },
     "react-dom@19.0.0_react@19.0.0": {
       "integrity": "sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==",
       "dependencies": [
@@ -2243,9 +2261,11 @@
         "npm:@types/node@20",
         "npm:@types/react-dom@19",
         "npm:@types/react@19",
+        "npm:chart.js@^4.4.8",
         "npm:eslint-config-next@15.2.0",
         "npm:eslint@9",
         "npm:next@15.2.0",
+        "npm:react-chartjs-2@^5.3.0",
         "npm:react-dom@19",
         "npm:react@19",
         "npm:tailwindcss@4",
