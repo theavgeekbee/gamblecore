@@ -1,6 +1,7 @@
 "use client";
 
 import {SkibidiTerminal} from "@/components/skibiditerminal";
+import Randomizer from "@/components/randomizer";
 
 function generateRandomData() {
     const data = [];
@@ -24,6 +25,7 @@ export default function Home() {
   return (
       <main>
           <SkibidiTerminal data={generateRandomData()} trades={[]} />
+          <Randomizer />
       </main>
   )
 }

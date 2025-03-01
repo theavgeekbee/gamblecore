@@ -30,6 +30,8 @@ export function SkibidiTerminal (
         const canvas = canvasRef.current;
         const ctx = canvas!.getContext("2d")!;
 
+        ctx.fillStyle = "black";
+
         let lowerPrice = 0, higherPrice = 0;
         for (const data of props.data) {
             lowerPrice = Math.min(lowerPrice, data.low);
