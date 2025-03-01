@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import yfinance as yf
 
 app = Flask(__name__)
@@ -14,15 +14,12 @@ def get_stock_data():
     if not ticker:
         return jsonify({"error": "Ticker symbol is required"}), 400
 
-    if not ticker_exists(ticker):
-        return jsonify({"error": "Invalid ticker symbol or data unavailable"}), 404
-
     stock = yf.Ticker(ticker)
     stock_info = stock.info
-    hist = stock.history(period="5d")
+    hist = stock.history(period="5d", interval="1m")
 
     historical_data = [
-            {"Open": row["Open"], "High": row["High"], "Low": row["Low"], "Close": row["Close"]}
+            {"open": row["Open"], "high": row["High"], "low": row["Low"], "close": row["Close"]}
             for _, row in hist.iterrows()
     ]
 
