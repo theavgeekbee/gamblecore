@@ -18,6 +18,7 @@
     "express": "^4.21.2",
     "jsdom": "^26.0.0",
     "openai": "^4.86.1",
-    "turndown": "^7.2.0"
+    "turndown": "^7.2.0",
+    "yahoo-finance2": "^2.13.3"
   }
 }

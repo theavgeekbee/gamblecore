@@ -25,11 +25,6 @@ async function getAIResponse(prompt: string): Promise<any> {
   }
 }
 
-(async () => {
-  console.log(await getAIResponse("What color is the sky? Format your response as plain JSON NO markdown, like { \"color\": \"blue\" }"));
-  process.exit();
-})();
-
 const app = express();
 const port = 3500;
 
@@ -119,6 +114,53 @@ function filterExpiredItems(): void {
   });
   saveDatabase();
 }
+
+const lootboxAdjectives = [
+  "shitty",
+  "goated",
+  "crappy",
+  "amazing",
+  "sigma",
+  "based",
+  "cringe",
+  "ohio",
+  "skibidi",
+  "beta",
+  "mogging",
+  "chad",
+  "virgin",
+  "sus",
+  "lit",
+  "dope",
+  "lame",
+  "epic",
+  "trash",
+  "fire",
+  "busted",
+  "pog",
+  "noob",
+  "pro",
+  "sussy",
+  "drip",
+  "hype",
+  "gamer",
+  "meta",
+  "clutch",
+  "toxic",
+  "tryhard",
+  "sweaty",
+  "bot",
+  "nerfed",
+  "buffed",
+  "cracked"
+];
+
+function makeNewLootboxClass(): LootboxClass {
+  const name = Array.from({ length: 3 }, () => lootboxAdjectives[Math.floor(Math.random() * lootboxAdjectives.length)]).join(' ') + ' lootbox';
+  return { name };
+}
+
+console.log(makeNewLootboxClass());
 
 setInterval(filterExpiredItems, 5000);
 
