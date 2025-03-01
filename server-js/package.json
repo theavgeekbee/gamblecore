@@ -10,8 +10,14 @@
   "description": "",
   "dependencies": {
     "@types/express": "^5.0.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/turndown": "^5.0.5",
+    "axios": "^1.8.1",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "jsdom": "^26.0.0",
+    "openai": "^4.86.1",
+    "turndown": "^7.2.0"
   }
 }

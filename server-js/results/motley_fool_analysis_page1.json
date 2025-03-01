@@ -1,0 +1,60 @@
+[
+  {
+    "title": "These 2 Artificial Intelligence Stocks Could Be the Best Buys in the Quantum Computing Revolution",
+    "url": "https://www.fool.com/investing/2025/03/01/these-2-artificial-intelligence-stocks-could-be-th/",
+    "analysis": [
+      {
+        "ticker": "GOOG",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "GOOGL",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "IBM",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "The Smartest Dividend Stocks to Buy With $3,000 Right Now",
+    "url": "https://www.fool.com/investing/2025/03/01/the-smartest-dividend-stocks-to-buy-with-3000-now/",
+    "analysis": [
+      {
+        "ticker": "MO",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "O",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "CVS",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Berkshire Hathaway A: Buy, Sell, Hold, or Convert?",
+    "url": "https://www.fool.com/investing/2025/03/01/berkshire-hathaway-a-buy-sell-hold-or-convert/",
+    "analysis": [
+      {
+        "ticker": "BRK.A",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "BRK.B",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  }
+]
