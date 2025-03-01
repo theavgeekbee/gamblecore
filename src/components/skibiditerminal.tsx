@@ -61,6 +61,7 @@ export function SkibidiTerminal(
         ctx.fillText("Please wait while your data loads!", 0, 50);
 
         function draw() {
+            fetchData().then(e => e);
             ctx.clearRect(0, 0, canvas!.width, canvas!.height);
             const numCandles = Math.floor((canvas!.width - 65) / 20);
 
@@ -137,10 +138,10 @@ export function SkibidiTerminal(
                 const profit = trade.type === TradeType.BUY ? currentPrice - trade.entry_price
                     : trade.entry_price - currentPrice;
 
-                const trunctated = Math.trunc(profit * 100) / 100;
+                const truncated = Math.trunc(profit * 100) / 100;
                 ctx.fillStyle = isProfitable ? "green" : "red";
                 ctx.fillText(
-                    `${trade.units} | $${trade.entry_price} | ${isProfitable ? "" : "-"}$${Math.abs(trunctated)}`,
+                    `${trade.units} | $${trade.entry_price} | ${isProfitable ? "" : "-"}$${Math.abs(truncated)}`,
                     65,
                     location - 8
                 )
