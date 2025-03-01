@@ -7,7 +7,6 @@ export enum TradeType {
 }
 
 export interface ChartDataPoint {
-    label: string;
     high: number;
     low: number;
     open: number;
@@ -31,20 +30,63 @@ export function SkibidiTerminal (
         const canvas = canvasRef.current;
         const ctx = canvas!.getContext("2d")!;
 
+        let lowerPrice = 0, higherPrice = 0;
+        for (const data of props.data) {
+            lowerPrice = Math.min(lowerPrice, data.low);
+            higherPrice = Math.max(higherPrice, data.high)
+        }
+
+        function convertPriceToY(price: number) {
+            const range = higherPrice - lowerPrice;
+            const priceDiff = price - lowerPrice;
+            return (priceDiff / range) * canvas!.height;
+        }
+
+        const lp = Math.trunc(lowerPrice * 100) / 100;
+        const hp = Math.trunc(higherPrice * 100) / 100;
+        // write the low price at the bottom
+        ctx.font = "15px Arial";
+        ctx.fillText("$" + lp, 0, canvas!.height);
+        ctx.fillText("$" + hp, 0, 20);
         // draw a vertical line
         ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(0, canvas!.height);
+        ctx.moveTo(60, 0);
+        ctx.lineTo(60, canvas!.height);
         ctx.stroke();
 
         // draw a horizontal line
         ctx.lineTo(canvas!.width, canvas!.height);
         ctx.stroke();
 
-        // we can display max of 20 candlesticks
-        const reversed = props.data.reverse();
-        for (let i = 0; i < Math.max(20, reversed.length); i++) {
+        let initialX = 65;
+        const numCandles = Math.floor((canvas!.width - 65) / 20);
 
+        for (let i = Math.max(props.data.length - numCandles, 0); i < props.data.length ; i++) {
+            const data = props.data[i];
+            console.log(data);
+             const candleWidth = 10;
+
+            const bodyTop = Math.max(data.open, data.close);
+            const bodyBottom = Math.min(data.close, data.open);
+            const topWick = data.high;
+            const bottomWick = data.low;
+
+            // set color
+            ctx.fillStyle = data.close > data.open ? "green" : "red";
+
+            // candle body
+            ctx.fillRect(
+                initialX,
+                convertPriceToY(bodyTop),
+                candleWidth,
+                convertPriceToY(bodyBottom) - convertPriceToY(bodyTop)
+            )
+
+            // wicks
+            ctx.fillRect(initialX + 4, convertPriceToY(topWick), 2, convertPriceToY(bodyTop) - convertPriceToY(topWick));
+            ctx.fillRect(initialX + 4, convertPriceToY(bodyBottom), 2, convertPriceToY(bottomWick) - convertPriceToY(bodyBottom));
+
+            initialX += 20;
         }
 
     }, []);
