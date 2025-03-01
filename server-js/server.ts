@@ -66,7 +66,7 @@ const saveData = (data: any): void => {
 const db: DataStore = loadData();
 
 app.get("/inventory", (req, res) => {
-  res.json(userInventory);
+  res.json(db.inventory);
 });
 
 app.get("")
