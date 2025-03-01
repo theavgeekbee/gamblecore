@@ -1,10 +1,41 @@
 from flask import Flask
+import yfinance as yf
 
-app = Flask()
+app = Flask(__name__)
 
 @app.route("/item-shop")
 def route_item_shop():
-    
+    pass
+
+
+@app.route('/stock', methods=['GET'])
+def get_stock_data():
+    ticker = request.args.get('ticker')
+    if not ticker:
+        return jsonify({"error": "Ticker symbol is required"}), 400
+
+    if not ticker_exists(ticker):
+        return jsonify({"error": "Invalid ticker symbol or data unavailable"}), 404
+
+    stock = yf.Ticker(ticker)
+    stock_info = stock.info
+    hist = stock.history(period="5d")
+
+    historical_data = [
+            {"Open": row["Open"], "High": row["High"], "Low": row["Low"], "Close": row["Close"]}
+            for _, row in hist.iterrows()
+    ]
+
+    return jsonify({
+        "symbol": stock_info.get("symbol", ticker),
+        "name": stock_info.get("shortName", "N/A"),
+        "current_price": stock_info.get("currentPrice", "N/A"),
+        "market_cap": stock_info.get("marketCap", "N/A"),
+        "52_week_high": stock_info.get("fiftyTwoWeekHigh", "N/A"),
+        "52_week_low": stock_info.get("fiftyTwoWeekLow", "N/A"),
+        "historical_data": historical_data
+        })
+
 
 if (__name__ == "__main__"):
-    app.run(host="localhost", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
