@@ -1,5 +1,150 @@
 {
   "inventory": [],
-  "lootboxClasses": {},
-  "wallet": 5000
+  "lootboxClasses": {
+    "meta poggers trash lootbox": {
+      "name": "meta poggers trash lootbox",
+      "rollInfo": {
+        "commonTickers": [
+          "RMBI",
+          "REAX",
+          "CTRI",
+          "NFE",
+          "RWAY",
+          "GTES",
+          "TRUP",
+          "GSIW",
+          "AMRX",
+          "RILYK",
+          "ERII",
+          "EPD",
+          "ASMB",
+          "BROS",
+          "SENS",
+          "CMA",
+          "THCH",
+          "ALE",
+          "HOUS",
+          "JAMF"
+        ],
+        "uncommonTickers": [
+          "ETH",
+          "NVO",
+          "SPOT",
+          "SOFI",
+          "HOOD",
+          "FDX",
+          "VKTX",
+          "ANET",
+          "MPW",
+          "SPOT"
+        ],
+        "rareTickers": [
+          "TSLA",
+          "IBM",
+          "AMD",
+          "V",
+          "KVUE"
+        ]
+      }
+    },
+    "sweaty epic nerfed lootbox": {
+      "name": "sweaty epic nerfed lootbox",
+      "rollInfo": {
+        "commonTickers": [
+          "MHH",
+          "FSTR",
+          "SEG",
+          "NRSNW",
+          "BFH",
+          "ARKOW",
+          "PCG^H",
+          "CRL",
+          "WNS",
+          "ENTG",
+          "FVNNU",
+          "MLSS",
+          "CTSH",
+          "SRG^A",
+          "TECX",
+          "SAFE",
+          "YSXT",
+          "PSA^L",
+          "ACEL",
+          "EAI"
+        ],
+        "uncommonTickers": [
+          "SUI",
+          "SOFI",
+          "QUBT",
+          "AAPL",
+          "O",
+          "AAPL",
+          "INTC",
+          "UPS",
+          "VKTX",
+          "BTC"
+        ],
+        "rareTickers": [
+          "IAS",
+          "KR",
+          "ODD",
+          "LMT",
+          "GS"
+        ]
+      }
+    }
+  },
+  "wallet": 5000,
+  "currentShop": {
+    "lootbox": {
+      "lootboxClass": "sweaty epic nerfed lootbox",
+      "price": 622
+    },
+    "tickerTicket": {
+      "ticker": "LENZ",
+      "price": 196
+    },
+    "fillerItems": [
+      {
+        "id": "0osezzzepb8r",
+        "name": "junk",
+        "type": "junk",
+        "description": "it's worthless... (unless?)",
+        "quantity": 1,
+        "purchasedAt": "2025-03-02T06:08:44.467Z",
+        "expiresAt": null,
+        "purchasePrice": 4
+      },
+      {
+        "id": "i95mvptuxte",
+        "name": "junk",
+        "type": "junk",
+        "description": "it's worthless... (unless?)",
+        "quantity": 1,
+        "purchasedAt": "2025-03-02T06:08:44.467Z",
+        "expiresAt": null,
+        "purchasePrice": 7
+      },
+      {
+        "id": "eo84t3c4384",
+        "name": "junk",
+        "type": "junk",
+        "description": "it's worthless... (unless?)",
+        "quantity": 1,
+        "purchasedAt": "2025-03-02T06:08:44.467Z",
+        "expiresAt": null,
+        "purchasePrice": 4
+      },
+      {
+        "id": "qok1omvpqcg",
+        "name": "junk",
+        "type": "junk",
+        "description": "it's worthless... (unless?)",
+        "quantity": 1,
+        "purchasedAt": "2025-03-02T06:08:44.468Z",
+        "expiresAt": null,
+        "purchasePrice": 7
+      }
+    ]
+  }
 }

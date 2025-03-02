@@ -118,6 +118,7 @@ type BaseItem = {
   quantity: number,
   purchasedAt: Date,
   expiresAt: Date | null,
+  purchasePrice?: number,
 };
 
 enum ItemType {
@@ -178,6 +179,7 @@ type DataStore = {
   inventory: Item[],
   lootboxClasses: Record<string, LootboxClass>,
   wallet: number,
+  currentShop: Shop | null,
 };
 
 const dataFilePath = path.join(__dirname, 'db.json');
@@ -485,22 +487,28 @@ async function buildItemShop(): Promise<Shop> {
 
   const fillerItems: Item[] = [];
 
-  for (let i=0; i<4; i++) {
+  for (let i = 0; i < 4; i++) {
     const roll = rollWeightedValue(fillerWeights);
 
     switch (roll) {
       case "randomStock": {
         const ticker = pickRandomTickers(1)[0];
         const price = await getNathansStockPrice(ticker);
-        fillerItems.push(makeStockItem(ticker, 1, price));
+        const item = makeStockItem(ticker, 1, price);
+        item.purchasePrice = randInt(50, 200);
+        fillerItems.push(item);
         break;
       }
       case "reroller": {
-        fillerItems.push(makeRerollerItem());
+        const item = makeRerollerItem();
+        item.purchasePrice = randInt(10, 50);
+        fillerItems.push(item);
         break;
       }
       case "trash": {
-        fillerItems.push(makeJunkItem());
+        const item = makeJunkItem();
+        item.purchasePrice = randInt(1, 10);
+        fillerItems.push(item);
         break;
       }
     }
@@ -519,7 +527,12 @@ async function buildItemShop(): Promise<Shop> {
   };
 }
 
-console.log(makeNewLootboxClass());
+(async () => {
+  if (db.currentShop === null) {
+    db.currentShop = await buildItemShop();
+    saveDatabase();
+  }
+})();
 
 setInterval(filterExpiredItems, 5000);
 
@@ -535,6 +548,16 @@ function getValidTickers(): string[] {
 
 app.get("/valid-tickers", (req, res) => {
   res.json(getValidTickers());
+});
+
+app.get("/shop", (req, res) => {
+  res.json({
+    lootboxItem: {...makeLootboxFromClass(db.currentShop!.lootbox.lootboxClass),
+      price: db.currentShop!.lootbox.price},
+    tickerTicketItem: {...makeTickerTicketItem(db.currentShop!.tickerTicket.ticker),
+      price: db.currentShop!.tickerTicket.price},
+    fillerItems: db.currentShop!.fillerItems
+  })
 });
 
 app.get("/items/:id", (req, res) => {
