@@ -23,10 +23,6 @@ export const handleSell = (stock: string, units: number, price: number) => {
         return;
     }
     global_vars.balance -= leverage;
-    global_vars.portfolio = {
-        ...global_vars.portfolio,
-        [stock]: (global_vars.portfolio[stock] || 0) - units
-    };
     global_vars.trades = [...global_vars.trades, {
         type: "Sell",
         stock,
@@ -44,10 +40,6 @@ export const handleBuy = (stock: string, units: number, price: number) => {
         return;
     }
     global_vars.balance -= cost;
-    global_vars.portfolio = {
-        ...global_vars.portfolio,
-        [stock]: (global_vars.portfolio[stock] || 0) + units
-    };
     global_vars.trades = [...global_vars.trades, {
         type: "Buy",
         stock,
@@ -71,6 +63,11 @@ const TradingPanel: React.FC = () => {
         return () => clearInterval(interval);
     }, [selectedStock]);
 
+    const changeStock = (stock: string) => {
+        setSelectedStock(stock);
+        global_vars.viewing = stock;
+    }
+
     const executeBuy = () => {
         handleBuy(selectedStock, units, price);
         setRefresh(!refresh);
@@ -89,7 +86,7 @@ const TradingPanel: React.FC = () => {
             <h2 className="text-xl font-bold">Trade Stocks</h2>
 
             <label className="block">Select Stock:</label>
-            <select value={selectedStock} onChange={(e) => setSelectedStock(e.target.value)}
+            <select value={selectedStock} onChange={(e) => changeStock(e.target.value)}
                     className="w-full p-2 rounded bg-gray-700 text-white mb-4">
                 <option value="APPL">Apple (AAPL)</option>
                 <option value="TSLA">Tesla (TSLA)</option>
@@ -113,22 +110,18 @@ const TradingPanel: React.FC = () => {
             <h3 className="text-lg font-semibold mt-4">Account Balance: <span
                 className="font-bold">${global_vars.balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></h3>
 
-            <h3 className="text-lg font-semibold mt-4">Your Holdings</h3>
-            <ul>
-                {Object.entries(global_vars.portfolio).map(([stock, amount]) => (
-                    <li key={stock}>{stock}: {amount} shares</li>
-                ))}
-            </ul>
-
-            <h3 className="text-lg font-semibold mt-4">Transaction History</h3>
+            <h3 className="text-lg font-semibold mt-4">Open Positions</h3>
             <ul className="mt-2">
                 {
                     global_vars.trades.map((t, index) => {
                         if (t.closed) return <div key={index}></div>;
+                        const price = global_vars.current_price;
+                        const profitable = t.type === "Buy" ? price > t.price : price < t.price;
+                        const profit = Math.abs((price - t.price) * t.units) * t.units;
                         return (
                             <div key={index}>
-                                {t.type} {t.units} share(s) of {t.stock} at
-                                ${t.price.toFixed(2)} {t.closed ? "(CLOSED)" : ""}
+                                {t.type === "Buy" ? <span className={"green"}>Long</span> : <span className={"red"}>Short</span>} {t.units} share(s) of {t.stock} at
+                                ${t.price.toFixed(2)} | <span className={profitable ? "green" : "red"}>${profit.toFixed(2)}</span> {t.closed ? "(CLOSED)" : ""}
                                 {
                                     t.closed ? <></> : <button onClick={(_) => executeClose(index)}>Close</button>
                                 }

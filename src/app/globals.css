@@ -19,3 +19,10 @@ html {
     display: flex;
     gap: 10px;
 }
+
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}

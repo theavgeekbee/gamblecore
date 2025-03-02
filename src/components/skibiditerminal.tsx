@@ -29,11 +29,13 @@ export function SkibidiTerminal() {
         let data: ChartDataPoint[] = [];
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:5000/stock?ticker=AAPL"); // Replace with actual API endpoint
+                const response = await fetch("http://localhost:5000/stock?ticker=" + global_vars.viewing); // Replace with actual API endpoint
                 let normal_data = await response.json();
+                console.log(normal_data);
                 let historical_data = normal_data['historical_data'];
                 let offset_data = historical_data.slice(0, historical_data.length - global_vars.offset--);
                 data = serializeHistoricalData(offset_data);
+                console.log(data);
                 global_vars.current_price = data[data.length - 1].close;
             } catch (error) {
                 console.error("Error fetching candlestick data:", error);
