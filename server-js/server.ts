@@ -1,7 +1,6 @@
 import express from 'express';
 import OpenAI from 'openai';
 import fs from 'fs';
-import path from 'path';
 import dotenv from 'dotenv';
 import axios from 'axios';
 
@@ -167,7 +166,7 @@ type DataStore = {
   currentShop: Shop | null,
 };
 
-const dataFilePath = path.join(__dirname, 'db.json');
+const dataFilePath = "db.json";
 
 const loadData = (): any => {
   if (fs.existsSync(dataFilePath)) {
