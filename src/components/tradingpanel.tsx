@@ -1,45 +1,63 @@
 import React, {useState, useEffect} from "react";
 import {global_vars, waltuh} from "@/utils/global";
+import Randomizer from "@/components/randomizer";
 
-export const handleClose = (index: number, price: number) => {
-    global_vars.trades[index].closed = true;
-    7
-    global_vars.balance += price * global_vars.trades[index].units;
-    56
+export const handleClose = (index: number) => {
+    fetch(waltuh + "stocks/sell/" + global_vars.trades[index].id, {
+        method: "POST",
+        headers: {
+            "ngrok-skip-browser-warning": "true",
+            "Content-Type": "application/json"
+        }
+    }).then(_ => global_vars.trades[index].closed = true);
 }
 
 // opens a short position
-export const handleSell = (stock: string, units: number, price: number) => {
-    const leverage = units * price;
-    if (leverage > global_vars.balance) {
-        alert("Order rejected: failed to provide leverage");
-        return;
-    }
-    global_vars.balance -= leverage;
-    global_vars.trades = [...global_vars.trades, {
-        type: "Sell",
-        stock,
-        units,
-        price,
-        closed: false
-    }]
+export const handleSell = (stock: string, units: number) => {
+    fetch(waltuh + "stocks/buy-short/" + stock + "?quantity=" + units, {
+        method: "POST",
+            headers: {
+            "ngrok-skip-browser-warning": "true",
+                "Content-Type": "application/json"
+        }
+    }).then(r => r.json()).then(data => {
+        global_vars.trades.push(
+            {
+                id: data['id'],
+                type: "Sell",
+                stock,
+                units,
+                price: data['purchasePrice'],
+                closed: false
+            }
+        )
+    }).catch(e => {
+        console.log("order rejected: insufficient funds", e)
+    })
 }
 
 // open a long position
-export const handleBuy = (stock: string, units: number, price: number) => {
-    const cost = units * price;
-    if (cost > global_vars.balance) {
-        alert("Order rejected: insufficient funds");
-        return;
-    }
-    global_vars.balance -= cost;
-    global_vars.trades = [...global_vars.trades, {
-        type: "Buy",
-        stock,
-        units,
-        price,
-        closed: false
-    }]
+export const handleBuy = (stock: string, units: number) => {
+    fetch(waltuh + "stocks/buy-stock/" + stock + "?quantity=" + units, {
+        method: "POST",
+        headers: {
+            "ngrok-skip-browser-warning": "true",
+            "Content-Type": "application/json"
+        }
+    }).then(r => r.json()).then(data => {
+        global_vars.trades.push(
+            {
+                id: data['id'],
+                type: "Buy",
+                stock,
+                units,
+                price: data['purchasePrice'],
+                closed: false
+            }
+        )
+    }).catch(e => {
+        console.log("order rejected: insufficient funds", e)
+    })
 };
 
 
@@ -49,6 +67,7 @@ const TradingPanel: React.FC = () => {
     const [units, setUnits] = useState<number>(0);
     const [refresh, setRefresh] = useState<boolean>(false);
     const [validTickers, setValidTickers] = useState<string[]>([]);
+    const [balance, setBalance] = useState<number>(0);
 
     useEffect(() => {
         fetch(waltuh + "valid-tickers", {
@@ -64,6 +83,16 @@ const TradingPanel: React.FC = () => {
             });
 
         const interval = setInterval(() => {
+            fetch(waltuh + "wallet", {
+                method: "GET",
+                headers: {
+                    "ngrok-skip-browser-warning": "true",
+                    "Content-Type": "application/json"
+                }
+            }).then(r => r.json()).then(data => {
+                console.log("updated balance,", data['wallet'])
+                setBalance(data['wallet'])
+            });
             setPrice(global_vars.current_price);
         }, 10);
         return () => clearInterval(interval);
@@ -75,16 +104,17 @@ const TradingPanel: React.FC = () => {
     }
 
     const executeBuy = () => {
-        handleBuy(selectedStock, units, price);
+        handleBuy(selectedStock, units);
         setRefresh(!refresh);
     }
     const executeSell = () => {
-        handleSell(selectedStock, units, price);
+        handleSell(selectedStock, units);
         setRefresh(!refresh);
     }
 
     const executeClose = (index: number) => {
-        handleClose(index, price);
+        handleClose(index);
+        setRefresh(!refresh);
     }
 
     return (
@@ -114,10 +144,12 @@ const TradingPanel: React.FC = () => {
             </div>
 
             <h3 className="text-lg font-semibold mt-4">Account Balance: <span
-                className="font-bold">${global_vars.balance.toLocaleString('en-US', {
+                className="font-bold">${balance.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             })}</span></h3>
+
+            <Randomizer/>
 
             <h3 className="text-lg font-semibold mt-4">Open Positions</h3>
             <ul className="mt-2">

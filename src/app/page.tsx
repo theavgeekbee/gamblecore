@@ -22,7 +22,6 @@ export default function Home() {
                     <TradingPanel/>
                 </div>
                 <div className={"row"}>
-                    <Randomizer/>
                     <InventoryList />
                     <ItemShop />
                 </div>

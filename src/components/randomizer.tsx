@@ -17,15 +17,10 @@ export default function Randomizer() {
 
             setTrade(`${buy_or_sell} ${numShares} MKT`)
 
-            if (numShares * global_vars.current_price > global_vars.balance) {
-                console.log("rejected auto-trade: insufficient funds");
-                return;
-            }
-
             if (buy_or_sell === "BUY") {
-                handleBuy(global_vars.viewing, numShares, global_vars.current_price)
+                handleBuy(global_vars.viewing, numShares)
             } else {
-                handleSell(global_vars.viewing, numShares, global_vars.current_price)
+                handleSell(global_vars.viewing, numShares)
             }
         }, 5000);
 

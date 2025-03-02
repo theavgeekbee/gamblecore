@@ -10,6 +10,7 @@ interface InventoryItem {
     expiresAt: string | null;
     purchasePrice?: number;
     ticker?: string;
+    id: string;
 }
 
 const InventoryList: React.FC = () => {
@@ -43,6 +44,25 @@ const InventoryList: React.FC = () => {
                 // Attempt to parse JSON
                 const data: InventoryItem[] = JSON.parse(text);
                 setInventory(data);
+
+                for (const item of data) {
+                    if (item.type === "stock" || item.type === "short") {
+                        const itemId = item.id;
+
+                        if (!global_vars.trades.some(x => x.id === itemId)) {
+                            global_vars.trades.push(
+                                {
+                                    id: itemId,
+                                    type: item.type === "stock" ? "Buy" : "Sell",
+                                    stock: item.ticker!,
+                                    units: item.quantity,
+                                    price: item.purchasePrice!,
+                                    closed: false
+                                }
+                            )
+                        }
+                    }
+                }
             } catch (err) {
                 console.error("Error fetching inventory:", err);
                 setError(err instanceof Error ? err.message : "Unknown error");
@@ -50,7 +70,8 @@ const InventoryList: React.FC = () => {
                 setLoading(false);
             }            
         };
-        fetchInventory();
+
+        setInterval(fetchInventory, 1000);
     }, []);
 
     if(loading) return <p className="text-white">Loading inventory...</p>;

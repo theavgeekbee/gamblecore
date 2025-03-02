@@ -12,6 +12,7 @@ export let global_vars: {
     viewing: "AAPL"
 }
 export interface Trade {
+    id: string,
     type: string,
     stock: string,
     units: number,
