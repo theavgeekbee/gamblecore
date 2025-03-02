@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "UPS",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "AMZN",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

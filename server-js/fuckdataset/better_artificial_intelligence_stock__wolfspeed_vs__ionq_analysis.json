@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "WOLF",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "IONQ",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "TSLA",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

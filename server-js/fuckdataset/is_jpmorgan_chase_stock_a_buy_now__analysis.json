@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "JPM",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "GSPC",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

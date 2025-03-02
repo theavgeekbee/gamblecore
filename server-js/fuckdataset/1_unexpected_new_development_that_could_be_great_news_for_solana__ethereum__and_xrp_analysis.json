@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "SOL",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "ETH",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "XRP",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

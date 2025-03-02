@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "DPZ",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "UBER",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

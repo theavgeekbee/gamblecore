@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "WRD",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "PONY",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "UBER",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

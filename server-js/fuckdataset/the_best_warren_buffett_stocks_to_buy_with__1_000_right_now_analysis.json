@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "MA",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "KO",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "OXY",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "V",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  }
+]

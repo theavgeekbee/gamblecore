@@ -1,0 +1,27 @@
+[
+  {
+    "ticker": "AXP",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "BRK.A",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "BRK.B",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "MCO",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "CB",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  }
+]

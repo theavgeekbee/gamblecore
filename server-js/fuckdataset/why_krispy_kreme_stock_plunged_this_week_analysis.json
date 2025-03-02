@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "DNUT",
+    "rating": "VERY_BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "MCD",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

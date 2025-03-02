@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "AMD",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "INTC",
+    "rating": "BAD",
+    "spicy": false
+  },
+  {
+    "ticker": "MSFT",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  }
+]

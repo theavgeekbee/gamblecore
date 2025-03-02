@@ -1,0 +1,32 @@
+[
+  {
+    "ticker": "GOOGL",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "GOOG",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "AMZN",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "MSFT",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "ARM",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

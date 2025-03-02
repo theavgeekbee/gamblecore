@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "BTC",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "AAPL",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  }
+]

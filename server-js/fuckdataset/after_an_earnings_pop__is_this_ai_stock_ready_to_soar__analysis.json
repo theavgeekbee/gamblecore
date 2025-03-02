@@ -1,0 +1,27 @@
+[
+  {
+    "ticker": "APPN",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "MSFT",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "CRM",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NOW",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "PEGA",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

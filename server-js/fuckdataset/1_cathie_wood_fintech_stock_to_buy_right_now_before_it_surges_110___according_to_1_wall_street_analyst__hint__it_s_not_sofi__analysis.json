@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "HOOD",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "COIN",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "SOFI",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "TSLA",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  }
+]

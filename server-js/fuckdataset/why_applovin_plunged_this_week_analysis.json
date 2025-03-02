@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "APP",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "META",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

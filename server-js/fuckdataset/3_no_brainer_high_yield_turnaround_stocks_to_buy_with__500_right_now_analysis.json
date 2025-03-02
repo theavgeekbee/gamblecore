@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "EPR",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "WPC",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "TD",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

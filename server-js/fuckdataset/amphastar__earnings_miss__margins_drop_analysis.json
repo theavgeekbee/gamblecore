@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "AMPH",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "LLY",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

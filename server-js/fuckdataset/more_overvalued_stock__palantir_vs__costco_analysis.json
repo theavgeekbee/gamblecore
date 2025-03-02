@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "PLTR",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "COST",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

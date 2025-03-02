@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "ETH",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "DOGE",
+    "rating": "VERY_BAD",
+    "spicy": true
+  }
+]

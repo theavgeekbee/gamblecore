@@ -1,0 +1,347 @@
+[
+  {
+    "title": "If I Could Only Buy 1 Quantum Computing Stock, This Would Be It",
+    "url": "https://www.fool.com/investing/2025/02/28/if-i-could-only-buy-1-quantum-computing-stock-goog/",
+    "analysis": [
+      {
+        "ticker": "GOOG",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "IONQ",
+        "rating": "BAD",
+        "spicy": true
+      },
+      {
+        "ticker": "QUBT",
+        "rating": "VERY_BAD",
+        "spicy": true
+      },
+      {
+        "ticker": "RGTI",
+        "rating": "BAD",
+        "spicy": true
+      }
+    ]
+  },
+  {
+    "title": "Middleby Reports Strong Q4, Plans Strategic Split",
+    "url": "https://www.fool.com/investing/2025/02/28/middleby-reports-strong-q4-plans-strategic-split/",
+    "analysis": [
+      {
+        "ticker": "MIDD",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Grocery Outlet Resets Growth Strategy Under New CEO",
+    "url": "https://www.fool.com/investing/2025/02/28/grocery-outlet-resets-growth-strategy-under-new-ce/",
+    "analysis": [
+      {
+        "ticker": "GO",
+        "rating": "BAD",
+        "spicy": true
+      }
+    ]
+  },
+  {
+    "title": "Verizon Details Cloud Platform Development Plans",
+    "url": "https://www.fool.com/investing/2025/02/28/verizon-details-cloud-platform-development-plans/",
+    "analysis": [
+      {
+        "ticker": "VZ",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Solventum: Q4 EPS Beats, Cash Flow Dips",
+    "url": "https://www.fool.com/data-news/2025/02/28/solventum-eps-beats-cash-flow-dips/",
+    "analysis": [
+      {
+        "ticker": "SOLV",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "MMM",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "TMO",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Why Krispy Kreme Stock Plunged This Week",
+    "url": "https://www.fool.com/investing/2025/02/28/why-krispy-kreme-stock-plunged-this-week/",
+    "analysis": [
+      {
+        "ticker": "DNUT",
+        "rating": "VERY_BAD",
+        "spicy": true
+      },
+      {
+        "ticker": "MCD",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Oddity Tech Grows 27%, Eyes New Brands",
+    "url": "https://www.fool.com/investing/2025/02/28/oddity-techs-innovation-pipeline-ramps-up/",
+    "analysis": [
+      {
+        "ticker": "ODD",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Zoom Sees AI Momentum as Enterprise Revenue Grows",
+    "url": "https://www.fool.com/investing/2025/02/28/zoom-sees-ai-momentum-as-enterprise-revenue-grows/",
+    "analysis": [
+      {
+        "ticker": "ZM",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "AMZN",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "DAL",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "This Could Be the Best GLP-1 Stock to Buy in 2025",
+    "url": "https://www.fool.com/investing/2025/02/28/this-could-be-the-best-glp-1-stock-to-buy-in-2025/",
+    "analysis": [
+      {
+        "ticker": "AMGN",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "LLY",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Rocket Lab: Q4 Revenue Jumps 121%",
+    "url": "https://www.fool.com/data-news/2025/02/28/rocket-lab-q4-revenue-jumps-121/",
+    "analysis": [
+      {
+        "ticker": "RKLB",
+        "rating": "GOOD",
+        "spicy": true
+      }
+    ]
+  },
+  {
+    "title": "3 Dividend Stocks to Double Up on Right Now",
+    "url": "https://www.fool.com/investing/2025/02/28/3-dividend-stocks-to-double-up-on-right-now/",
+    "analysis": [
+      {
+        "ticker": "KO",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "NEE",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "VICI",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Is Roku Finally Ready for Prime Time?",
+    "url": "https://www.fool.com/investing/2025/02/28/is-roku-finally-ready-for-primetime/",
+    "analysis": [
+      {
+        "ticker": "ROKU",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "1 Biotech Stock to Buy in 2025, and 1 to Avoid",
+    "url": "https://www.fool.com/investing/2025/02/28/1-biotech-stock-to-buy-in-2025-and-1-to-avoid/",
+    "analysis": [
+      {
+        "ticker": "VKTX",
+        "rating": "VERY_GOOD",
+        "spicy": true
+      },
+      {
+        "ticker": "NVAX",
+        "rating": "BAD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "3 New Opportunities That Could Send XRP Past $3 Within 3 Months",
+    "url": "https://www.fool.com/investing/2025/02/28/3-new-opportunities-that-could-send-xrp-past-3-wit/",
+    "analysis": [
+      {
+        "ticker": "XRP",
+        "rating": "VERY_GOOD",
+        "spicy": true
+      }
+    ]
+  },
+  {
+    "title": "Is Netflix Stock a Buy Before March 2?",
+    "url": "https://www.fool.com/investing/2025/02/28/is-netflix-stock-a-buy-before-march-2/",
+    "analysis": [
+      {
+        "ticker": "NFLX",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "DIS",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "WBD",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "3 No-Brainer High Yield Turnaround Stocks to Buy With $500 Right Now",
+    "url": "https://www.fool.com/investing/2025/02/28/3-no-brainer-high-yield-turnaround-stocks-to-buy-w/",
+    "analysis": [
+      {
+        "ticker": "EPR",
+        "rating": "GOOD",
+        "spicy": true
+      },
+      {
+        "ticker": "WPC",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "TD",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "Breakfast News: Amazon Reboots Alexa",
+    "url": "https://www.fool.com/investing/breakfast-news/2025/02/28/breakfast-news-amazon-reboots-alexa/",
+    "analysis": [
+      {
+        "ticker": "AMZN",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "RKLB",
+        "rating": "BAD",
+        "spicy": true
+      },
+      {
+        "ticker": "MQ",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "NBIS",
+        "rating": "VERY_BAD",
+        "spicy": true
+      },
+      {
+        "ticker": "FUBO",
+        "rating": "BAD",
+        "spicy": true
+      },
+      {
+        "ticker": "DIS",
+        "rating": "GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "1 Artificial Intelligence (AI) Stock That Could Be Bigger Than Nvidia in 5 Years",
+    "url": "https://www.fool.com/investing/2025/02/28/artificial-intelligence-ai-stock-bigger-nvidia/",
+    "analysis": [
+      {
+        "ticker": "AMD",
+        "rating": "GOOD",
+        "spicy": true
+      },
+      {
+        "ticker": "NVDA",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "What's Going On With Walmart Stock?",
+    "url": "https://www.fool.com/investing/2025/02/28/whats-going-on-with-walmart-stock/",
+    "analysis": [
+      {
+        "ticker": "WMT",
+        "rating": "BAD",
+        "spicy": false
+      }
+    ]
+  },
+  {
+    "title": "3 Top Tech Stocks to Buy Right Now",
+    "url": "https://www.fool.com/investing/2025/02/28/3-top-tech-stocks-to-buy-right-now/",
+    "analysis": [
+      {
+        "ticker": "TSM",
+        "rating": "VERY_GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "GOOG",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "GOOGL",
+        "rating": "GOOD",
+        "spicy": false
+      },
+      {
+        "ticker": "ANET",
+        "rating": "GOOD",
+        "spicy": true
+      }
+    ]
+  }
+]

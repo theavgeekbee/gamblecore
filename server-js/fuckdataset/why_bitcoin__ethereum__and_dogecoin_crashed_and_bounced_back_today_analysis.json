@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "BTC",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "ETH",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "DOGE",
+    "rating": "BAD",
+    "spicy": true
+  }
+]

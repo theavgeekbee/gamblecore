@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "AVGO",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "AMZN",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

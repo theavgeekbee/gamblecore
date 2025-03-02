@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "O",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "TGT",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "PM",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "GSPC",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

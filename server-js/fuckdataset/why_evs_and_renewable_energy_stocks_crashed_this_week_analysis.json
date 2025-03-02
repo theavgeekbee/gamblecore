@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "FLNC",
+    "rating": "VERY_BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "RIVN",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "CHPT",
+    "rating": "BAD",
+    "spicy": true
+  }
+]

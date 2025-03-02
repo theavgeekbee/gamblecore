@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "BRK.B",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "BRK.A",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

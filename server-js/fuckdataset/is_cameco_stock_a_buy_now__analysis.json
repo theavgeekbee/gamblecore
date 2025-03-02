@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "CCJ",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "BAM",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "SO",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "SMR",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

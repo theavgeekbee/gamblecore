@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "GOOGL",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "MSFT",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "IONQ",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "QBTS",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

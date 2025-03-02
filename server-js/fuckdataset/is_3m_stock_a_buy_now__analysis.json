@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "MMM",
+    "rating": "BAD",
+    "spicy": false
+  },
+  {
+    "ticker": "SOLV",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "AIG",
+    "rating": "BAD",
+    "spicy": false
+  }
+]

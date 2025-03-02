@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "SOLV",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "MMM",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "TMO",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  }
+]

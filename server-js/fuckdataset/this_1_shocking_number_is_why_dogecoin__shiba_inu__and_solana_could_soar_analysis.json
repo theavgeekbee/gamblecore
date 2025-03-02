@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "DOGE",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "SHIB",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "SOL",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

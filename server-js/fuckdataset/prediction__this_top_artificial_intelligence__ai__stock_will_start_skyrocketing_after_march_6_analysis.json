@@ -1,0 +1,32 @@
+[
+  {
+    "ticker": "AVGO",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "AAPL",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "GOOGL",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "META",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "SWKS",
+    "rating": "BAD",
+    "spicy": false
+  }
+]

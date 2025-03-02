@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "BA",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "LMT",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "AMZN",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

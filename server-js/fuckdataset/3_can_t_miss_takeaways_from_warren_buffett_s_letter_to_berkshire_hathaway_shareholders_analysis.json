@@ -1,0 +1,27 @@
+[
+  {
+    "ticker": "BRK.B",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "AAPL",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "AMEX",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "META",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

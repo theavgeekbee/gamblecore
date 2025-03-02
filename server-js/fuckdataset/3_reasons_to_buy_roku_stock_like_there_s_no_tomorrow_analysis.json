@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "ROKU",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NFLX",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "DIS",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

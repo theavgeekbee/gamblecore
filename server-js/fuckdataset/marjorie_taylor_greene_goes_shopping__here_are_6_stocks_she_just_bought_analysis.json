@@ -1,0 +1,32 @@
+[
+  {
+    "ticker": "AAPL",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "INTC",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "META",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "DVN",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NSC",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "UPS",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

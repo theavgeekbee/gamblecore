@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "^GSPC",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "^SPX",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

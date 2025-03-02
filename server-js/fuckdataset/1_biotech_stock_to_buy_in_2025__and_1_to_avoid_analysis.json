@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "VKTX",
+    "rating": "VERY_GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "NVAX",
+    "rating": "BAD",
+    "spicy": false
+  }
+]

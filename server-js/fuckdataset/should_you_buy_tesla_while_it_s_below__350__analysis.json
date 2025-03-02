@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "TSLA",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "GM",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "BYD",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]

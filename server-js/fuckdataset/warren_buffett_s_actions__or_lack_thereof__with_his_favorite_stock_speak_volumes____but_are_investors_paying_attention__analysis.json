@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "BRK.B",
+    "rating": "BAD",
+    "spicy": false
+  },
+  {
+    "ticker": "BRK.A",
+    "rating": "BAD",
+    "spicy": false
+  },
+  {
+    "ticker": "AAPL",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "OXY",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

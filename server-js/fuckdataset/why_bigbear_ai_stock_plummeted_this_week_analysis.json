@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "BBAI",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "NVDA",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

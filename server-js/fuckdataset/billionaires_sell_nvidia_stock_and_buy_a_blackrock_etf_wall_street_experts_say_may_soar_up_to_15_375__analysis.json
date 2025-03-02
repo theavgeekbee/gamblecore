@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "NVDA",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "IBIT",
+    "rating": "BAD",
+    "spicy": true
+  }
+]

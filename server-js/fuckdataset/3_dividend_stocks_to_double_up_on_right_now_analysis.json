@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "KO",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NEE",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "VICI",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

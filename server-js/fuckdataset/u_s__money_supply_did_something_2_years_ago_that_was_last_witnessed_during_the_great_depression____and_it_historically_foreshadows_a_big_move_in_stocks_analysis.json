@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "^GSPC",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "^DJI",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "^IXIC",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

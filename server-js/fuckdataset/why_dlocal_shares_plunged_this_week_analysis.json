@@ -1,0 +1,27 @@
+[
+  {
+    "ticker": "DLO",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "AMZN",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "SHOP",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "NFLX",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "SPOT",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

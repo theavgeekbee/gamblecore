@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "ZM",
+    "rating": "GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "AMZN",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "DAL",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "ticker": "CELH",
+    "rating": "BAD",
+    "spicy": true
+  },
+  {
+    "ticker": "PEP",
+    "rating": "GOOD",
+    "spicy": false
+  }
+]

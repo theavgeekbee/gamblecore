@@ -1,0 +1,17 @@
+[
+  {
+    "ticker": "AXON",
+    "rating": "VERY_GOOD",
+    "spicy": false
+  },
+  {
+    "ticker": "FDX",
+    "rating": "GOOD",
+    "spicy": true
+  },
+  {
+    "ticker": "UPS",
+    "rating": "GOOD",
+    "spicy": true
+  }
+]
