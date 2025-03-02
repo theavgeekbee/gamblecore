@@ -70,19 +70,19 @@ const TradingPanel: React.FC = () => {
     const [balance, setBalance] = useState<number>(0);
 
     useEffect(() => {
-        fetch(waltuh + "valid-tickers", {
-            method: "GET",
-            headers: {
-                "ngrok-skip-browser-warning": "true",
-                "Content-Type": "application/json"
-            }
-        })
-            .then(r => r.json())
-            .then(r => {
-                setValidTickers(r)
-            });
 
         const interval = setInterval(() => {
+            fetch(waltuh + "valid-tickers", {
+                method: "GET",
+                headers: {
+                    "ngrok-skip-browser-warning": "true",
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(r => r.json())
+                .then(r => {
+                    setValidTickers(r)
+                });
             fetch(waltuh + "wallet", {
                 method: "GET",
                 headers: {
@@ -90,7 +90,6 @@ const TradingPanel: React.FC = () => {
                     "Content-Type": "application/json"
                 }
             }).then(r => r.json()).then(data => {
-                console.log("updated balance,", data['wallet'])
                 setBalance(data['wallet'])
             });
             setPrice(global_vars.current_price);
@@ -148,8 +147,6 @@ const TradingPanel: React.FC = () => {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             })}</span></h3>
-
-            <Randomizer/>
 
             <h3 className="text-lg font-semibold mt-4">Open Positions</h3>
             <ul className="mt-2">

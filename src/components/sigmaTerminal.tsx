@@ -31,12 +31,10 @@ export function SigmaTerminal() {
             try {
                 const response = await fetch(waltuh2 + "stock?ticker=" + global_vars.viewing); // Replace with actual API endpoint
                 let normal_data = await response.json();
-                console.log(normal_data);
                 let historical_data = normal_data['historical_data'];
-                let offset_data = historical_data.slice(0, historical_data.length - global_vars.offset--);
-                data = serializeHistoricalData(offset_data);
-                console.log(data);
+                data = serializeHistoricalData(historical_data);
                 global_vars.current_price = data[data.length - 1].close;
+                console.log("Candlestick data fetched");
             } catch (error) {
                 console.error("Error fetching candlestick data:", error);
             }
@@ -47,10 +45,6 @@ export function SigmaTerminal() {
 
         const canvas = canvasRef.current;
         const ctx = canvas!.getContext("2d")!;
-        ctx.fillStyle = "black";
-        ctx.font="30px Arial";
-        ctx.fillText("Please wait while your data loads!", 0, 50);
-
         function draw() {
             fetchData().then(e => e);
             ctx.clearRect(0, 0, canvas!.width, canvas!.height);
@@ -143,7 +137,7 @@ export function SigmaTerminal() {
         setTimeout(() => {
             draw();
             setInterval(draw, 2000);
-        }, 2000);
+        }, 5000);
     }, []);
 
     return <canvas ref={canvasRef} width={700} height={500}/>;

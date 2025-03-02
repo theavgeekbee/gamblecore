@@ -16,7 +16,7 @@ export default function Home() {
                     <h2>Rizz First / Then Griddy</h2>
                 </div>
                 <div className={"row"}>
-                    <Suspense fallback={<h1>Loading SkibidiTerminal...</h1>}>
+                    <Suspense fallback={<h1>Loading SigmaTerminal...</h1>}>
                         <SigmaTerminal/>
                     </Suspense>
                     <TradingPanel/>

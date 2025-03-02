@@ -21,7 +21,6 @@ const InventoryList: React.FC = () => {
     useEffect(() => {
         const fetchInventory = async () => {
             try {
-                console.log("Fetching inventory...");
                 
                 const response = await fetch(waltuh + "inventory", {
                     method: "GET",
@@ -31,15 +30,11 @@ const InventoryList: React.FC = () => {
                     }
                 });
             
-                console.log("Response status:", response.status);
-                console.log("Response headers:", response.headers);
-            
                 if (!response.ok) {
                     throw new Error(`Failed to fetch inventory: ${response.status} ${response.statusText}`);
                 }
             
                 const text = await response.text();  // First, get the raw response to inspect
-                console.log("Raw response:", text);
             
                 // Attempt to parse JSON
                 const data: InventoryItem[] = JSON.parse(text);
