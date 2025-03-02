@@ -8,6 +8,8 @@ import TradingPanel from "@/components/tradingpanel";
 export default function Home() {
     return (
         <main>
+            <h1>SkibidiTerminal</h1>
+            <h2>Rizz First / Then Griddy</h2>
             <Suspense fallback={<h1>Loading SkibidiTerminal...</h1>}>
                 <SkibidiTerminal trades={[{
                     entry_price: 240,
