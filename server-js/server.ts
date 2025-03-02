@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 import axios from 'axios';
-import cors from 'cors';
 
 dotenv.config();
 
@@ -453,7 +452,7 @@ type Shop = {
     ticker: string,
     price: number
   },
-  fillerItems: [Item, Item, Item, Item]
+  fillerItems: Item[]
 }
 
 async function buildItemShop(): Promise<Shop> {
@@ -471,18 +470,50 @@ async function buildItemShop(): Promise<Shop> {
   const tickerTicketPrice = randInt(100, 500);
 
   const fillerWeights = {
-    "randomStock": 5,
+    "randomStock": 1,
     "reroller": 1,
-    ""
+    "trash": 3
   };
 
+  const fillerItems: Item[] = [];
+
+  for (let i=0; i<4; i++) {
+    const roll = rollWeightedValue(fillerWeights);
+
+    switch (roll) {
+      case "randomStock": {
+        const ticker = pickRandomTickers(1)[0];
+        const price = await getNathansStockPrice(ticker);
+        fillerItems.push(makeStockItem(ticker, 1, price));
+        break;
+      }
+      case "reroller": {
+        fillerItems.push(makeRerollerItem());
+        break;
+      }
+      case "trash": {
+        fillerItems.push(makeJunkItem());
+        break;
+      }
+    }
+  }
+
+  return {
+    lootbox: {
+      lootboxClass: lootboxClass.name,
+      price: lootboxPrice
+    },
+    tickerTicket: {
+      ticker,
+      price: tickerTicketPrice
+    },
+    fillerItems
+  };
 }
 
 console.log(makeNewLootboxClass());
 
 setInterval(filterExpiredItems, 5000);
-
-app.use(cors());
 
 app.get("/inventory", (req, res) => {
   res.json(db.inventory);
