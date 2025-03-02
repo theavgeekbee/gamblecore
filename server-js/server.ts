@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 import axios from 'axios';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -480,6 +481,8 @@ async function buildItemShop(): Promise<Shop> {
 console.log(makeNewLootboxClass());
 
 setInterval(filterExpiredItems, 5000);
+
+app.use(cors());
 
 app.get("/inventory", (req, res) => {
   res.json(db.inventory);
