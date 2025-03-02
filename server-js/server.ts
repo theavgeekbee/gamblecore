@@ -65,7 +65,7 @@ function pickRandomTickers(n: number): string[] {
 
 // Function to get the current price of a ticker from the Python server
 function getNathansStockPrice(ticker: string): Promise<number> {
-  return axios.get(`http://localhost:3500/stock-info`, {
+  return axios.get(`http://localhost:5000/stock-info`, {
     params: { ticker }
   })
   .then(response => {
