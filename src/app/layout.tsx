@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SkibidiTerminal",
+  title: "SigmaTerminal",
   description: "Rizz First / Then Griddy",
 };
 

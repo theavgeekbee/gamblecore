@@ -21,7 +21,7 @@ function serializeHistoricalData(data: any[]): ChartDataPoint[] {
     })
 }
 
-export function SkibidiTerminal() {
+export function SigmaTerminal() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
 
