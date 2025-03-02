@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 import yfinance as yf
 from datetime import datetime, timedelta
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/item-shop")
 def route_item_shop():
