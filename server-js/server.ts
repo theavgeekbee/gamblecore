@@ -539,9 +539,11 @@ setInterval(async () => {
     db.currentShop = await buildItemShop();
     saveDatabase();
   }
-
-  ensureTickerTicket("AAPL");
 })();
+
+setInterval(async () => {
+  ensureTickerTicket("AAPL");
+}, 1000);
 
 setInterval(filterExpiredItems, 5000);
 
