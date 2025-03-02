@@ -49,3 +49,6 @@ server-js/node_modules/
 
 server/stock_data
 server-js/db.json
+
+env/*
+venv/*
