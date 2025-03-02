@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SigmaTerminal",
   description: "Rizz First / Then Griddy",
+
 };
 
 export default function RootLayout({

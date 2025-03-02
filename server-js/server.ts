@@ -7,25 +7,6 @@ import axios from 'axios';
 
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-// Function to get AI response
-async function getAIResponse(prompt: string): Promise<any> {
-  try {
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 500,
-    });
-    console.log("AI prompt:", prompt);
-    console.log("AI response:", response.choices[0].message.content);
-    return JSON.parse(response.choices[0].message.content!);
-  } catch (error) {
-    console.error('Error getting AI response:', error);
-    throw error;
-  }
-}
-
 type StockPoolStructure = {
   good: string[],
   bad: string[],
@@ -85,7 +66,7 @@ function pickRandomTickers(n: number): string[] {
 // Function to get the current price of a ticker from the Python server
 async function getNathansStockPrice(ticker: string): Promise<number> {
   try {
-    const response = await axios.get(`http://127.0.0.1:5000/stock-info`, {
+    const response = await axios.get(`https://gamble-flask.nwlee.tech/stock-info`, {
       params: { ticker }
     });
     const stockData = response.data;
