@@ -97,11 +97,11 @@ def get_stock_data():
     #last_update_time = datetime.now()
 
     # Find the closest historical data point
-    closest_data_point = min(hist, key=lambda x: abs(datetime.fromisoformat(x['Datetime']) - simulated_current_time))
+    closest_data_point = min(hist, key=lambda x: abs(x['Datetime'] - simulated_current_time))
 
     # Filter out future data points
     filtered_hist = [
-        record for record in hist if datetime.fromisoformat(record['Datetime']) <= simulated_current_time
+        record for record in hist if record['Datetime'] <= simulated_current_time
     ]
 
     return jsonify({
@@ -117,11 +117,20 @@ def get_stock_data():
                 "high": record["High"],
                 "low": record["Low"],
                 "close": record["Close"],
-                "timestamp": int(datetime.fromisoformat(record['Datetime']).timestamp())
+                "timestamp": int(record["Datetime"].timestamp())
             }
             for record in filtered_hist
         ]
     })
+
+# Convert strings to datetimes and leave datetime objects as they are
+def convert_to_datetime(input_thingy):
+    if isinstance(input_thingy, str):
+        try:
+            return datetime.fromisoformat(input_thingy)
+        except ValueError:
+            return input_thingy
+    return input_thingy
 
 @app.route('/stock-info', methods=['GET'])
 def get_stock_info():
@@ -153,7 +162,9 @@ def get_stock_info():
     #last_update_time = datetime.now()
 
     # Find the closest historical data point
-    closest_data_point = min(hist, key=lambda x: abs(datetime.fromisoformat(x['Datetime']) - simulated_current_time))
+    closest_data_point = min(hist, key=lambda x: abs(convert_to_datetime(x['Datetime'] - simulated_current_time)))
+
+    print(closest_data_point)
 
     return jsonify({
         "symbol": stock_info.get("symbol", ticker),

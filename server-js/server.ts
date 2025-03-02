@@ -345,7 +345,7 @@ function makeTickerTicketItem(ticker: string): TickerTicketItem {
   const id = generateUniqueId();
   const quantity = 1;
   const purchasedAt = new Date();
-  const expiresAt = null;
+  const expiresAt = new Date(purchasedAt.getTime() + 15 * 60 * 1000); // 15 minutes from now
 
   return {
     id,

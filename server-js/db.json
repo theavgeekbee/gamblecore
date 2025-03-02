@@ -20,6 +20,17 @@
       "expiresAt": null,
       "purchasePrice": 241.83999633789062,
       "ticker": "AAPL"
+    },
+    {
+      "id": "c5s7vwdr90k",
+      "name": "AAPL shorts",
+      "type": "short",
+      "description": "shorts of AAPL, purchased at $239.64",
+      "quantity": 7,
+      "purchasedAt": "2025-03-02T08:26:44.365Z",
+      "expiresAt": null,
+      "purchasePrice": 239.639892578125,
+      "ticker": "AAPL"
     }
   ],
   "lootboxClasses": {
@@ -116,7 +127,7 @@
       }
     }
   },
-  "wallet": 1856.0800476074219,
+  "wallet": 178.60079956054688,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",
