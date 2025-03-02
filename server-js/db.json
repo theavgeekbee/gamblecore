@@ -231,15 +231,14 @@
       "purchasePrice": 4
     },
     {
-      "id": "di7b1dlsp84",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 9,
-      "purchasedAt": "2025-03-02T10:28:15.886Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
+      "id": "8l7nfbzrc6j",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell LENZ stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:44:13.339Z",
+      "expiresAt": "2025-03-02T10:59:13.339Z",
+      "ticker": "LENZ"
     }
   ],
   "lootboxClasses": {
@@ -336,7 +335,7 @@
       }
     }
   },
-  "wallet": 677197.683883667,
+  "wallet": 667392.4190654755,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",

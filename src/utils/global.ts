@@ -1,4 +1,4 @@
-export let global_vars: {
+export const global_vars: {
     current_price: number,
     trades: Trade[],
     balance: number,

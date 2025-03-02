@@ -9,7 +9,7 @@ export const handleClose = (index: number) => {
             "ngrok-skip-browser-warning": "true",
             "Content-Type": "application/json"
         }
-    }).then(_ => global_vars.trades[index].closed = true);
+    }).then(() => global_vars.trades[index].closed = true);
 }
 
 // opens a short position

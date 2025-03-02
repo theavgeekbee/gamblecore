@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef} from "react";
 import {global_vars, waltuh2} from "@/utils/global";
 
 export interface ChartDataPoint {
@@ -10,8 +10,8 @@ export interface ChartDataPoint {
     close: number;
 }
 
-function serializeHistoricalData(data: any[]): ChartDataPoint[] {
-    return data.map((d: any) => {
+function serializeHistoricalData(data: {high: number, low: number, open: number, close: number}[]): ChartDataPoint[] {
+    return data.map((d) => {
         return {
             high: d['high'],
             low: d['low'],
@@ -30,8 +30,8 @@ export function SigmaTerminal() {
         const fetchData = async () => {
             try {
                 const response = await fetch(waltuh2 + "stock?ticker=" + global_vars.viewing); // Replace with actual API endpoint
-                let normal_data = await response.json();
-                let historical_data = normal_data['historical_data'];
+                const normal_data = await response.json();
+                const historical_data = normal_data['historical_data'];
                 data = serializeHistoricalData(historical_data);
                 global_vars.current_price = data[data.length - 1].close;
                 console.log("Candlestick data fetched");
