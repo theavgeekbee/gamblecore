@@ -1,28 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
 @layer base;
 
-html {
-    font-family: 'Chewy', serif;
+:root {
+  --primary-blue: #578bfa;
+  --background-dark: #0a0b0d;
+  --text-light: #e0e0e0;
+  --text-dim: #a0a0a0;
+  --accent-green: #4caf50;
+  --accent-red: #f44336;
 }
+
+html {
+  font-family: "Chewy", serif;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
 .trade {
-    font-family: monospace;
+  font-family: monospace;
+  background-color: var(--background-dark);
+  border-radius: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--primary-blue);
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100vw;
+  padding: 16px;
 }
 
 .row {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  background-color: var(--background-dark);
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-blue);
 }
 
 .green {
-    color: green;
+  color: var(--accent-green);
 }
+
 .red {
-    color: red;
+  color: var(--accent-red);
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: var(--primary-blue);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Chewy", serif;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+input,
+select,
+textarea {
+  background-color: var(--background-dark);
+  border: 1px solid var(--primary-blue);
+  color: var(--text-light);
+  border-radius: 4px;
+  padding: 8px;
+  font-family: monospace;
 }
