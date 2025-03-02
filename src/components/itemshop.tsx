@@ -44,7 +44,7 @@ export default function ItemShop() {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        fetch(waltuh + "shop", {
+        const f = () => fetch(waltuh + "shop", {
             method: "GET",
             headers: {
                 "ngrok-skip-browser-warning": "true",
@@ -59,6 +59,8 @@ export default function ItemShop() {
                 setLoading(false);
             })
             .catch(e => console.error(e));
+
+	setTimeout(f, 10000);
     }, []);
 
     function buyLootBox() {
