@@ -105,7 +105,8 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*");
   next();
 });
 
@@ -121,6 +122,7 @@ type BaseItem = {
 
 enum ItemType {
   Stock = "stock",
+  Short = "short",
   TickerTicket = "tickerTicket",
   Lootbox = "lootbox",
   Reroller = "reroller",
@@ -129,6 +131,12 @@ enum ItemType {
 
 type StockItem = BaseItem & {
   type: ItemType.Stock,
+  purchasePrice: number,
+  ticker: string,
+}
+
+type ShortItem = BaseItem & {
+  type: ItemType.Short,
   purchasePrice: number,
   ticker: string,
 }
