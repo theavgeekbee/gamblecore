@@ -161,6 +161,7 @@ type JunkItem = BaseItem & {
 };
 
 type Item = StockItem
+  | ShortItem
   | TickerTicketItem
   | LootboxItem
   | RerollerItem
@@ -273,6 +274,24 @@ function makeStockItem(ticker: string, quantity: number, purchasePrice: number):
     name: `${ticker} stocks`,
     type: ItemType.Stock,
     description: `shares of ${ticker}, purchased at $${purchasePrice.toFixed(2)}`,
+    quantity,
+    purchasedAt,
+    expiresAt,
+    purchasePrice,
+    ticker,
+  };
+}
+
+function makeShortItem(ticker: string, quantity: number, purchasePrice: number): ShortItem {
+  const id = generateUniqueId();
+  const purchasedAt = new Date();
+  const expiresAt = null;
+
+  return {
+    id,
+    name: `${ticker} shorts`,
+    type: ItemType.Short,
+    description: `shorts of ${ticker}, purchased at $${purchasePrice.toFixed(2)}`,
     quantity,
     purchasedAt,
     expiresAt,
@@ -547,7 +566,8 @@ function getValidTickers(): string[] {
 }
 
 app.get("/valid-tickers", (req, res) => {
-  res.json(getValidTickers());
+  const validTickers = Array.from(new Set([...getValidTickers(), "AAPL"]));
+  res.json(validTickers);
 });
 
 app.get("/shop", (req, res) => {
@@ -560,18 +580,147 @@ app.get("/shop", (req, res) => {
   })
 });
 
+app.post("/shop/buy-lootbox", async (req, res) => {
+  const lootboxItem = makeLootboxFromClass(db.currentShop!.lootbox.lootboxClass);
+  const price = db.currentShop!.lootbox.price;
+
+  if (db.wallet < price) {
+    res.status(400).send("you broke as fuck");
+    return;
+  }
+
+  db.wallet -= price;
+
+  const items = await rollLootbox(db.currentShop!.lootbox.lootboxClass);
+  db.inventory.push(lootboxItem, ...items);
+  saveDatabase();
+  res.json({ lootboxItem, items });
+});
+
+app.post("/shop/buy-ticker-ticket", async (req, res) => {
+  const tickerTicketItem = makeTickerTicketItem(db.currentShop!.tickerTicket.ticker);
+  const price = db.currentShop!.tickerTicket.price;
+
+  if (db.wallet < price) {
+    res.status(400).send("you broke as fuck");
+    return;
+  }
+
+  db.wallet -= price;
+  db.inventory.push(tickerTicketItem);
+  saveDatabase();
+  res.json(tickerTicketItem);
+});
+
+app.post("/shop/buy-filler/:id", (req, res) => {
+  const fillerItem = db.currentShop!.fillerItems.find(item => item.id === req.params.id);
+  if (!fillerItem) {
+    res.status(404).send("Item not found");
+    return;
+  }
+
+  if (db.wallet < fillerItem.purchasePrice!) {
+    res.status(400).send("you broke as fuck");
+    return;
+  }
+
+  db.wallet -= fillerItem.purchasePrice!;
+  db.inventory.push(fillerItem);
+  db.currentShop!.fillerItems = db.currentShop!.fillerItems.filter(item => item.id !== req.params.id);
+  saveDatabase();
+  res.json(fillerItem);
+});
+
 app.get("/items/:id", (req, res) => {
   const item = getItemById(req.params.id);
   if (item) {
     res.json(item);
+  } else {
+    res.status(404).send("Item not found");
   }
-  res.status(404).send("Item not found");
 });
 
 app.delete("/items/:id", (req, res) => {
   deleteItemById(req.params.id);
   saveDatabase();
   res.status(204).send();
+});
+
+app.post("/stocks/buy-stock/:ticker", async (req, res) => {
+  const ticker = req.params.ticker;
+  const quantity = req.body.quantity;
+  const price = await getNathansStockPrice(ticker);
+  const totalPrice = price * quantity;
+  if (db.wallet < totalPrice) {
+    res.status(400).send("you broke as fuck");
+    return
+  }
+  const stockItem = makeStockItem(ticker, quantity, price);
+
+  db.wallet -= totalPrice;
+  db.inventory.push(stockItem);
+  saveDatabase();
+
+  res.json(stockItem);
+});
+
+app.post("/stocks/buy-short/:ticker", async (req, res) => {
+  const ticker = req.params.ticker;
+  const quantity = req.body.quantity;
+  const price = await getNathansStockPrice(ticker);
+  const totalPrice = price * quantity;
+  if (db.wallet < totalPrice) {
+    res.status(400).send("you broke as fuck");
+    return;
+  }
+
+  const shortItem = makeShortItem(ticker, quantity, price);
+  db.wallet -= totalPrice;
+  db.inventory.push(shortItem);
+  saveDatabase();
+
+  res.json(shortItem);
+});
+
+app.post("/stocks/sell/:id", async (req, res) => {
+  const item = getItemById(req.params.id);
+  if (!item) {
+    res.status(404).send("Item not found");
+    return;
+  }
+
+  if (item.type !== ItemType.Stock && item.type !== ItemType.Short) {
+    res.status(400).send("Item is not a stock or short");
+    return;
+  }
+
+  const price = await getNathansStockPrice(item.ticker);
+  let totalPrice = price * item.quantity;
+
+  if (item.type === ItemType.Short) {
+    const purchasePrice = item.purchasePrice;
+    totalPrice = (purchasePrice - price) * item.quantity;
+  }
+
+  db.wallet += totalPrice;
+  deleteItemById(req.params.id);
+  saveDatabase();
+
+  res.json({ ...item, totalPrice });
+});
+
+app.get("/wallet", (req, res) => {
+  res.json({ wallet: db.wallet });
+});
+
+app.get("/net-worth", (req, res) => {
+  const netWorth = db.wallet + db.inventory.reduce((acc, item) => {
+    if (item.type === ItemType.Stock || item.type === ItemType.Short) {
+      return acc + (item.quantity * item.purchasePrice!);
+    }
+    return acc;
+  }, 0);
+  res.json({ netWorth });
 });
 
 app.listen(port, "127.0.0.1", () => {
