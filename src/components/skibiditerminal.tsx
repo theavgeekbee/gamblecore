@@ -45,10 +45,10 @@ export function SkibidiTerminal(
             try {
                 const response = await fetch("http://localhost:5000/stock?ticker=AAPL"); // Replace with actual API endpoint
                 let normal_data = await response.json();
-                global_vars.current_price = normal_data['current_price'];
                 let historical_data = normal_data['historical_data'];
                 let offset_data = historical_data.slice(0, historical_data.length - global_vars.offset--);
                 data = serializeHistoricalData(offset_data);
+                global_vars.current_price = data[data.length - 1].close;
             } catch (error) {
                 console.error("Error fetching candlestick data:", error);
             }
@@ -125,6 +125,9 @@ export function SkibidiTerminal(
 
                 initialX += 20;
             }
+            // draw a line at the current close
+            ctx.fillStyle = "purple";
+            ctx.fillRect(60, convertPriceToY(data[data.length - 1].close), 5000, 2);
 
             initialX = 65;
             for (let i = 0; i < props.trades.length; i++) {

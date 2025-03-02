@@ -19,7 +19,7 @@ def get_stock_data():
 
     stock = yf.Ticker(ticker)
     stock_info = stock.info
-    hist = stock.history(period="10d", interval="1m")
+    hist = stock.history(period="8d", interval="1m")
 
     historical_data = [
             {"open": row["Open"], "high": row["High"], "low": row["Low"], "close": row["Close"]}
