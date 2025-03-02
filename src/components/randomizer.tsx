@@ -22,7 +22,7 @@ export default function Randomizer() {
             } else {
                 handleSell(global_vars.viewing, numShares)
             }
-        }, 6000);
+        }, 60000);
 
         const progressInterval = setInterval(() => {
             setProgress((prev) => prev + 50);
@@ -37,7 +37,7 @@ export default function Randomizer() {
     return (
         <div>
             <h1>Auto-Trader</h1>
-            <progress max={6000} value={progress}/>
+            <progress max={60000} value={progress}/>
             <h3 className={"trade"} style={{
                 color: trade.includes("BUY") ? "green" : "red",
                 fontSize: "20pt"
