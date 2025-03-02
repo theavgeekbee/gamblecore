@@ -22,8 +22,8 @@ export default function Home() {
                     <TradingPanel/>
                 </div>
                 <div className={"row"}>
-                    <InventoryList />
-                    <ItemShop />
+                    <InventoryList/>
+                    <ItemShop/>
                 </div>
             </div>
         </main>

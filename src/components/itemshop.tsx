@@ -1,4 +1,4 @@
-import { waltuh } from "@/utils/global";
+import {waltuh} from "@/utils/global";
 import {useEffect, useState} from "react";
 
 interface LootBox {
@@ -12,6 +12,7 @@ interface LootBox {
     class: string;
     price: number;
 }
+
 interface TickerTicket {
     id: string;
     name: string;
@@ -24,9 +25,21 @@ interface TickerTicket {
     price: number;
 }
 
+interface FillerItem {
+    id: string;
+    name: string;
+    type: string;
+    description: string;
+    quantity: number;
+    purchasedAt: string;
+    expiresAt: string;
+    price: number;
+}
+
 export default function ItemShop() {
     const [lootBox, setLootBox] = useState<LootBox>();
     const [tickerTicket, setTickerTicket] = useState<TickerTicket>();
+    const [fillerItems, setFillerItems] = useState<FillerItem[]>([]);
 
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -42,6 +55,7 @@ export default function ItemShop() {
             .then((data) => {
                 setLootBox(data['lootboxItem']);
                 setTickerTicket(data['tickerTicketItem']);
+                setFillerItems(data['fillerItems']);
                 setLoading(false);
             })
             .catch(e => console.error(e));
@@ -58,8 +72,21 @@ export default function ItemShop() {
             .then(r => r)
             .catch(e => console.error(e));
     }
+
     function buyTickerTicket() {
         fetch(waltuh + "shop/buy-ticker-ticket", {
+            method: "POST",
+            headers: {
+                "ngrok-skip-browser-warning": "true",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(r => r)
+            .catch(e => console.error(e));
+    }
+
+    function buyFiller(id: string) {
+        fetch(waltuh + "shop/buy-filler/" + id, {
             method: "POST",
             headers: {
                 "ngrok-skip-browser-warning": "true",
@@ -95,6 +122,12 @@ export default function ItemShop() {
                     <p>{tickerTicket?.description}</p>
                 </div>
             </button>
+            {fillerItems.map((item, index) => <button key={index}>
+                <div>
+                    <h3>{item.name} - ${item.price}</h3>
+                    <p>{item.description}</p>
+                </div>
+            </button>)}
         </div>
     }
 }

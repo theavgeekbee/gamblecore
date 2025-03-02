@@ -11,6 +11,7 @@ interface InventoryItem {
     purchasePrice?: number;
     ticker?: string;
     id: string;
+    description: string;
 }
 
 const InventoryList: React.FC = () => {
@@ -82,6 +83,7 @@ const InventoryList: React.FC = () => {
                     {inventory.map((item, index) => (
                         <li key={index} className="border-b border-gray-600 py-2">
                             <p className="font-semibold capitalize">{item.type} - {item.quantity}x</p>
+                            <p>{item.description}</p>
                             {item.purchasePrice && <p>Purchase Price: ${item.purchasePrice.toFixed(2)}</p>}
                             {item.ticker && <p>Ticker: {item.ticker}</p>}
                             <p>Purchased At: {new Date(item.purchasedAt).toLocaleString()}</p>
