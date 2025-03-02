@@ -64,18 +64,18 @@ function pickRandomTickers(n: number): string[] {
 }
 
 // Function to get the current price of a ticker from the Python server
-async function getNathansStockPrice(ticker: string): Promise<number> {
-  try {
-    const response = await axios.get(`http://localhost:3500/stock-info`, {
-      params: { ticker }
-    });
+function getNathansStockPrice(ticker: string): Promise<number> {
+  return axios.get(`http://localhost:3500/stock-info`, {
+    params: { ticker }
+  })
+  .then(response => {
     const stockData = response.data;
     return stockData.current_price;
-  } catch (error) {
-    console.error('Error getting stock price from nathans fucking server:', error);
-    // what the fuck
+  })
+  .catch(error => {
+    console.error('Error getting stock price from Nathan\'s server:', error);
     return 0;
-  }
+  });
 }
 
 getNathansStockPrice("AAPL")
