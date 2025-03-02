@@ -1,5 +1,27 @@
 {
-  "inventory": [],
+  "inventory": [
+    {
+      "id": "3374inb2agq",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell AAPL stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T07:07:01.675Z",
+      "expiresAt": null,
+      "ticker": "AAPL"
+    },
+    {
+      "id": "ai9pm4qw5nh",
+      "name": "AAPL stocks",
+      "type": "stock",
+      "description": "shares of AAPL, purchased at $241.84",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T07:07:11.494Z",
+      "expiresAt": null,
+      "purchasePrice": 241.83999633789062,
+      "ticker": "AAPL"
+    }
+  ],
   "lootboxClasses": {
     "meta poggers trash lootbox": {
       "name": "meta poggers trash lootbox",
@@ -94,7 +116,7 @@
       }
     }
   },
-  "wallet": 5000,
+  "wallet": 1856.0800476074219,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",

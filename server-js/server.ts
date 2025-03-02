@@ -551,6 +551,8 @@ async function buildItemShop(): Promise<Shop> {
     db.currentShop = await buildItemShop();
     saveDatabase();
   }
+
+  ensureTickerTicket("AAPL");
 })();
 
 setInterval(filterExpiredItems, 5000);
@@ -566,7 +568,7 @@ function getValidTickers(): string[] {
 }
 
 app.get("/valid-tickers", (req, res) => {
-  const validTickers = Array.from(new Set([...getValidTickers(), "AAPL"]));
+  const validTickers = Array.from(new Set([...getValidTickers()]));
   res.json(validTickers);
 });
 
@@ -646,14 +648,32 @@ app.delete("/items/:id", (req, res) => {
   res.status(204).send();
 });
 
+async function ensureTickerTicket(ticker: string): Promise<void> {
+  if (!db.inventory.find((item) => item.type === ItemType.TickerTicket && item.ticker === ticker)) {
+    const tickerTicketItem = makeTickerTicketItem(ticker);
+    db.inventory.push(tickerTicketItem);
+    saveDatabase();
+  }
+}
+
 app.post("/stocks/buy-stock/:ticker", async (req, res) => {
   const ticker = req.params.ticker;
-  const quantity = req.body.quantity;
+  let quantity: any = req.query.quantity;
+  if (quantity === undefined) {
+    res.status(400).send("Quantity is required");
+    return;
+  }
+  quantity = parseInt(quantity as string);
+  if (isNaN(quantity) || quantity <= 0) {
+    res.status(400).send("Quantity must be a positive number");
+    return;
+  }
+
   const price = await getNathansStockPrice(ticker);
   const totalPrice = price * quantity;
   if (db.wallet < totalPrice) {
     res.status(400).send("you broke as fuck");
-    return
+    return;
   }
   const stockItem = makeStockItem(ticker, quantity, price);
 
@@ -666,7 +686,17 @@ app.post("/stocks/buy-stock/:ticker", async (req, res) => {
 
 app.post("/stocks/buy-short/:ticker", async (req, res) => {
   const ticker = req.params.ticker;
-  const quantity = req.body.quantity;
+  let quantity: any = req.query.quantity;
+  if (quantity === undefined) {
+    res.status(400).send("Quantity is required");
+    return;
+  }
+  quantity = parseInt(quantity as string);
+  if (isNaN(quantity) || quantity <= 0) {
+    res.status(400).send("Quantity must be a positive number");
+    return;
+  }
+
   const price = await getNathansStockPrice(ticker);
   const totalPrice = price * quantity;
   if (db.wallet < totalPrice) {
@@ -713,14 +743,26 @@ app.get("/wallet", (req, res) => {
   res.json({ wallet: db.wallet });
 });
 
-app.get("/net-worth", (req, res) => {
-  const netWorth = db.wallet + db.inventory.reduce((acc, item) => {
-    if (item.type === ItemType.Stock || item.type === ItemType.Short) {
-      return acc + (item.quantity * item.purchasePrice!);
-    }
-    return acc;
-  }, 0);
-  res.json({ netWorth });
+app.get("/net-worth", async (req, res) => {
+  try {
+    const netWorth = db.wallet + await db.inventory.reduce(async (accPromise, item) => {
+      const acc = await accPromise;
+      if (item.type === ItemType.Stock || item.type === ItemType.Short) {
+        const currentPrice = await getNathansStockPrice(item.ticker);
+        if (item.type === ItemType.Stock) {
+          return acc + (item.quantity * currentPrice);
+        } else if (item.type === ItemType.Short) {
+          const purchasePrice = item.purchasePrice!;
+          return acc + (item.quantity * (purchasePrice - currentPrice));
+        }
+      }
+      return acc;
+    }, Promise.resolve(0));
+    res.json({ netWorth });
+  } catch (error) {
+    console.error('Error calculating net worth:', error);
+    res.status(500).send('Error calculating net worth');
+  }
 });
 
 app.listen(port, "127.0.0.1", () => {
