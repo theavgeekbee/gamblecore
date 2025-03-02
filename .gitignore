@@ -46,3 +46,5 @@ server/venv/*
 server-js/node_modules/
 
 server-js/fuckdataset/*
+
+.vscode/
