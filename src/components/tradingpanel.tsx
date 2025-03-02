@@ -2,17 +2,8 @@ import React, {useState, useEffect} from "react";
 import {global_vars} from "@/utils/global";
 
 export const handleClose = (index: number, price: number) => {
-    global_vars.trades[index].closed = true;
-    global_vars.balance += price * global_vars.trades[index].units;
-
-    let stock = global_vars.trades[index].stock;
-    let units = global_vars.trades[index].units;
-
-    if (global_vars.trades[index].type === "Buy") {
-        global_vars.portfolio[stock] -= units;
-    } else {
-        global_vars.portfolio[stock] += units;
-    }
+    global_vars.trades[index].closed = true;7
+    global_vars.balance += price * global_vars.trades[index].units;56
 }
 
 // opens a short position
