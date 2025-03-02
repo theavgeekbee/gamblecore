@@ -9,28 +9,6 @@
       "purchasedAt": "2025-03-02T07:07:01.675Z",
       "expiresAt": null,
       "ticker": "AAPL"
-    },
-    {
-      "id": "ai9pm4qw5nh",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $241.84",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T07:07:11.494Z",
-      "expiresAt": null,
-      "purchasePrice": 241.83999633789062,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "c5s7vwdr90k",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $239.64",
-      "quantity": 7,
-      "purchasedAt": "2025-03-02T08:26:44.365Z",
-      "expiresAt": null,
-      "purchasePrice": 239.639892578125,
-      "ticker": "AAPL"
     }
   ],
   "lootboxClasses": {
@@ -127,7 +105,7 @@
       }
     }
   },
-  "wallet": 178.60079956054688,
+  "wallet": 30000,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",
