@@ -49,6 +49,7 @@ async function validateTickers(tickers: string[]): Promise<string[]> {
   return validTickers;
 }
 
+/*
 // Example usage
 async function main() {
   const tickersToCheck = ['AAPL', 'MSFT', 'NOTREAL', 'GOOG', 'INVALIDTICKER'];
@@ -67,3 +68,38 @@ if (require.main === module) {
 }
 
 export { validateTickers };
+*/
+
+
+// open pool.json and filter tickers in the "good", "bad", and "spicy" keys
+
+import fs from 'fs';
+
+// Load the pool data
+
+(async () => {
+  const poolData = fs.readFileSync('pool.json', 'utf8');
+  const pool = JSON.parse(poolData);
+  
+  // Filter the tickers
+  
+  const goodTickers = await validateTickers(pool.good);
+  const badTickers = await validateTickers(pool.bad);
+  const spicyTickers = await validateTickers(pool.spicy);
+  
+  // Output the results
+  
+  console.log('Good tickerms:', goodTickers);
+  console.log('Bad tickers:', badTickers);
+  console.log('Spicy tickers:', spicyTickers);
+  
+  // save them to new_pool.json
+  
+  const newPool = {
+    good: goodTickers,
+    bad: badTickers,
+    spicy: spicyTickers,
+  };
+  
+  fs.writeFileSync('new_pool.json', JSON.stringify(newPool, null, 2));
+})();

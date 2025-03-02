@@ -25,6 +25,43 @@ async function getAIResponse(prompt: string): Promise<any> {
   }
 }
 
+type StockPoolStructure = {
+  good: string[],
+  bad: string[],
+  spicy: string[],
+};
+
+// import data from new_pool.json
+
+const poolData = fs.readFileSync('new_pool.json', 'utf8');
+const stockPool: StockPoolStructure = JSON.parse(poolData);
+
+type SymbolsDataStructure = Record<string, {
+  symbol: string,
+  name: string,
+  sector: string,
+  industry: string,
+}>;
+
+// import data from symbols_data.json
+
+const symbolsData = fs.readFileSync('symbols_data.json', 'utf8');
+const symbols: SymbolsDataStructure = JSON.parse(symbolsData);
+
+// pick n random unique strings from a list
+function pickRandomUniqueStrings(list: string[], n: number): string[] {
+  const result: string[] = [];
+  const indices: number[] = [];
+  while (result.length < n) {
+    const index = Math.floor(Math.random() * list.length);
+    if (!indices.includes(index)) {
+      result.push(list[index]);
+      indices.push(index);
+    }
+  }
+  return result;
+}
+
 const app = express();
 const port = 3500;
 
@@ -68,7 +105,12 @@ type LootboxItem = BaseItem & {
 type Item = StockItem | ShortItem | TickerTicketItem | LootboxItem;
 
 type LootboxClass = {
-  name: string
+  name: string,
+  rollInfo: {
+    commonTickers: string[],
+    uncommonTickers: string[],
+    rareTickers: string[],
+  }
 }
 
 type DataStore = {
@@ -157,7 +199,15 @@ const lootboxAdjectives = [
 
 function makeNewLootboxClass(): LootboxClass {
   const name = Array.from({ length: 3 }, () => lootboxAdjectives[Math.floor(Math.random() * lootboxAdjectives.length)]).join(' ') + ' lootbox';
-  return { name };
+
+  return {
+    name,
+    rollInfo: {
+      commonTickers: [],
+      uncommonTickers: [],
+      rareTickers: [],
+    }
+  };
 }
 
 console.log(makeNewLootboxClass());
