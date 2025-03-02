@@ -60,7 +60,7 @@ export default function ItemShop() {
             })
             .catch(e => console.error(e)));
 
-        setInterval(f, 10000);
+        setInterval(f, 1000);
     }, []);
 
     function buyLootBox() {
