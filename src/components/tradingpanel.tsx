@@ -148,6 +148,8 @@ const TradingPanel: React.FC = () => {
                 maximumFractionDigits: 2
             })}</span></h3>
 
+            <Randomizer />
+
             <h3 className="text-lg font-semibold mt-4">Open Positions</h3>
             <ul className="mt-2">
                 {
