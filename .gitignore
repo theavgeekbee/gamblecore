@@ -48,3 +48,5 @@ server-js/node_modules/
 server-js/fuckdataset/*
 
 .vscode/
+
+server/stock_data

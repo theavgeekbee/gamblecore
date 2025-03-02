@@ -1,37 +1,5 @@
 {
-  "inventory": [
-    {
-      "id": "g9mnxdf2m2t",
-      "type": "stock",
-      "quantity": 100,
-      "purchasedAt": "2025-03-01T23:51:34.295Z",
-      "expiresAt": null,
-      "purchasePrice": 100
-    },
-    {
-      "id": "f0gl3ezznrc",
-      "type": "short",
-      "quantity": 100,
-      "purchasedAt": "2025-03-01T23:51:34.295Z",
-      "expiresAt": null,
-      "purchasePrice": 100
-    },
-    {
-      "id": "wfdddof08oc",
-      "type": "tickerTicket",
-      "quantity": 1,
-      "purchasedAt": "2025-03-01T23:51:34.295Z",
-      "expiresAt": null,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "at9l5h82db",
-      "type": "lootbox",
-      "quantity": 1,
-      "purchasedAt": "2025-03-01T23:51:34.295Z",
-      "expiresAt": null,
-      "class": "shitty lootbox"
-    }
-  ],
-  "lootboxClasses": {}
+  "inventory": [],
+  "lootboxClasses": {},
+  "wallet": 1000
 }

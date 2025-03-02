@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import axios from 'axios';
 
 dotenv.config();
 
@@ -79,6 +80,24 @@ function pickRandomTickers(n: number): string[] {
   return pickRandomUniqueStrings(symbolsList, n);
 }
 
+// Function to get the current price of a ticker from the Python server
+async function getNathansStockPrice(ticker: string): Promise<number> {
+  try {
+    const response = await axios.get(`http://127.0.0.1:5000/stock-info`, {
+      params: { ticker }
+    });
+    const stockData = response.data;
+    return stockData.current_price;
+  } catch (error) {
+    console.error('Error getting stock price from nathans fucking server:', error);
+    throw error;
+  }
+}
+
+getNathansStockPrice("AAPL")
+  .then((price) => console.log("Price of AAPL:", price))
+  .catch((error) => console.error("Error getting price of AAPL:", error));
+
 const app = express();
 const port = 3500;
 
@@ -105,16 +124,20 @@ enum ItemType {
   Short = "short",
   TickerTicket = "tickerTicket",
   Lootbox = "lootbox",
+  Reroller = "reroller",
+  Junk = "junk",
 }
 
 type StockItem = BaseItem & {
   type: ItemType.Stock,
   purchasePrice: number,
+  ticker: string,
 }
 
 type ShortItem = BaseItem & {
   type: ItemType.Short,
   purchasePrice: number,
+  ticker: string
 }
 
 type TickerTicketItem = BaseItem & {
@@ -127,9 +150,20 @@ type LootboxItem = BaseItem & {
   class: string,
 }
 
-//type RerollerItem
+type RerollerItem = BaseItem & {
+  type: ItemType.Reroller,
+}
 
-type Item = StockItem | ShortItem | TickerTicketItem | LootboxItem;
+type JunkItem = BaseItem & {
+  type: ItemType.Junk,
+};
+
+type Item = StockItem
+  | ShortItem
+  | TickerTicketItem
+  | LootboxItem
+  | RerollerItem
+  | JunkItem;
 
 type LootboxClass = {
   name: string,
@@ -142,7 +176,8 @@ type LootboxClass = {
 
 type DataStore = {
   inventory: Item[],
-  lootboxClasses: Record<string, LootboxClass>
+  lootboxClasses: Record<string, LootboxClass>,
+  wallet: number,
 };
 
 const dataFilePath = path.join(__dirname, 'db.json');
@@ -224,25 +259,21 @@ const lootboxAdjectives = [
   "cracked"
 ];
 
-function makeStockItem(): StockItem {
+function makeStockItem(ticker: string, quantity: number, purchasePrice: number): StockItem {
   const id = generateUniqueId();
-  const name = "Stock";
-  const type = ItemType.Stock;
-  const description = "some shares of a company";
-  const quantity = 1;
-  const purchasePrice = Math.floor(Math.random() * 1000);
   const purchasedAt = new Date();
   const expiresAt = null;
 
   return {
     id,
-    name,
-    type,
-    description,
+    name: `${ticker} stocks`,
+    type: ItemType.Stock,
+    description: `shares of ${ticker}, purchased at $${purchasePrice.toFixed(2)}`,
     quantity,
-    purchasePrice,
     purchasedAt,
     expiresAt,
+    purchasePrice,
+    ticker,
   };
 }
 
@@ -289,9 +320,84 @@ function makeLootboxFromClass(lootboxClass: string): LootboxItem {
   };
 }
 
+function makeTickerTicketItem(ticker: string): TickerTicketItem {
+  const id = generateUniqueId();
+  const quantity = 1;
+  const purchasedAt = new Date();
+  const expiresAt = null;
+
+  return {
+    id,
+    name: "ticker ticket",
+    type: ItemType.TickerTicket,
+    description: `allows you to buy and sell ${ticker} stocks`,
+    quantity,
+    purchasedAt,
+    expiresAt,
+    ticker,
+  };
+}
+
+function rollWeightedValue(weights: Record<string, number>): string {
+  const totalWeight = Object.values(weights).reduce((acc, weight) => acc + weight, 0);
+  const randomValue = Math.random() * totalWeight;
+  let currentWeight = 0;
+  for (const [key, weight] of Object.entries(weights)) {
+    currentWeight += weight;
+    if (randomValue <= currentWeight) {
+      return key;
+    }
+  }
+  return Object.keys(weights)[0];
+}
+
+function makeJunkItem(): JunkItem {
+  const id = generateUniqueId();
+  const quantity = 1;
+  const purchasedAt = new Date();
+  const expiresAt = null;
+
+  return {
+    id,
+    name: "junk",
+    type: ItemType.Junk,
+    description: "it's worthless... (unless?)",
+    quantity,
+    purchasedAt,
+    expiresAt,
+  };
+}
+
 // roll a lootbox and return the items
 function rollLootbox(lootboxClass: string): Item[] {
   // first, what can be in a lootbox?
+  // each lootbox contains 5 items
+
+  const weightingTable = {
+    "junk": 5,
+    "random_stock": 1,
+    "ticker_ticket": 1,
+  }
+
+  const items: Item[] = [];
+
+  for (let i=0; i<5; i++) {
+    const roll = rollWeightedValue(weightingTable);
+
+    switch (roll) {
+      case "junk":
+        items.push(makeJunkItem());
+        break;
+      case "random_stock":
+        const randomTicker = pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.commonTickers, 1)[0];
+        // TODO: come back here
+        //items.push(makeStockItem(randomTicker, ));
+        break;
+      case "ticker_ticket":
+        items.push(makeTickerTicketItem(pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.commonTickers, 1)[0]));
+        break;
+    }
+  }
 
   return [];
 }
