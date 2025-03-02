@@ -66,14 +66,15 @@ function pickRandomTickers(n: number): string[] {
 // Function to get the current price of a ticker from the Python server
 async function getNathansStockPrice(ticker: string): Promise<number> {
   try {
-    const response = await axios.get(`https://gamble-flask.nwlee.tech/stock-info`, {
+    const response = await axios.get(`http://localhost:3500/stock-info`, {
       params: { ticker }
     });
     const stockData = response.data;
     return stockData.current_price;
   } catch (error) {
     console.error('Error getting stock price from nathans fucking server:', error);
-    throw error;
+    // what the fuck
+    return 0;
   }
 }
 
@@ -528,6 +529,11 @@ async function buildItemShop(): Promise<Shop> {
     fillerItems
   };
 }
+
+setInterval(async () => {
+  db.currentShop = await buildItemShop();
+  saveDatabase();
+}, 1000 * 60);
 
 (async () => {
   if (db.currentShop === null) {
