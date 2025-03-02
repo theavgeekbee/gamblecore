@@ -121,7 +121,6 @@ type BaseItem = {
 
 enum ItemType {
   Stock = "stock",
-  Short = "short",
   TickerTicket = "tickerTicket",
   Lootbox = "lootbox",
   Reroller = "reroller",
@@ -132,12 +131,6 @@ type StockItem = BaseItem & {
   type: ItemType.Stock,
   purchasePrice: number,
   ticker: string,
-}
-
-type ShortItem = BaseItem & {
-  type: ItemType.Short,
-  purchasePrice: number,
-  ticker: string
 }
 
 type TickerTicketItem = BaseItem & {
@@ -159,7 +152,6 @@ type JunkItem = BaseItem & {
 };
 
 type Item = StockItem
-  | ShortItem
   | TickerTicketItem
   | LootboxItem
   | RerollerItem
@@ -219,8 +211,11 @@ function filterExpiredItems(): void {
   saveDatabase();
 }
 
+function randInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const lootboxAdjectives = [
-  "shitty",
   "goated",
   "crappy",
   "amazing",
@@ -232,16 +227,16 @@ const lootboxAdjectives = [
   "beta",
   "mogging",
   "chad",
-  "virgin",
   "sus",
   "lit",
-  "dope",
+  "poggers",
   "lame",
   "epic",
   "trash",
   "fire",
   "busted",
   "pog",
+  "cracked",
   "noob",
   "pro",
   "sussy",
@@ -256,7 +251,6 @@ const lootboxAdjectives = [
   "bot",
   "nerfed",
   "buffed",
-  "cracked"
 ];
 
 function makeStockItem(ticker: string, quantity: number, purchasePrice: number): StockItem {
@@ -301,8 +295,7 @@ function getLootboxClassByName(name: string): LootboxClass {
   return db.lootboxClasses[name]!;
 }
 
-// make a new lootbox item given a class
-function makeLootboxFromClass(lootboxClass: string): LootboxItem {
+function makeRerollerItem(): RerollerItem {
   const id = generateUniqueId();
   const quantity = 1;
   const purchasedAt = new Date();
@@ -310,13 +303,12 @@ function makeLootboxFromClass(lootboxClass: string): LootboxItem {
 
   return {
     id,
-    name: getLootboxClassByName(lootboxClass).name,
-    type: ItemType.Lootbox,
-    description: `a very cool lootbox full of surprises`,
+    name: "reroller",
+    type: ItemType.Reroller,
+    description: "allows you to re-roll a ticker ticket with a random stock",
     quantity,
     purchasedAt,
     expiresAt,
-    class: lootboxClass,
   };
 }
 
@@ -351,6 +343,25 @@ function rollWeightedValue(weights: Record<string, number>): string {
   return Object.keys(weights)[0];
 }
 
+// make a new lootbox item given a class
+function makeLootboxFromClass(lootboxClass: string): LootboxItem {
+  const id = generateUniqueId();
+  const quantity = 1;
+  const purchasedAt = new Date();
+  const expiresAt = null;
+
+  return {
+    id,
+    name: getLootboxClassByName(lootboxClass).name,
+    type: ItemType.Lootbox,
+    description: `a very cool lootbox full of surprises`,
+    quantity,
+    purchasedAt,
+    expiresAt,
+    class: lootboxClass,
+  };
+}
+
 function makeJunkItem(): JunkItem {
   const id = generateUniqueId();
   const quantity = 1;
@@ -369,14 +380,15 @@ function makeJunkItem(): JunkItem {
 }
 
 // roll a lootbox and return the items
-function rollLootbox(lootboxClass: string): Item[] {
+async function rollLootbox(lootboxClass: string): Promise<Item[]> {
   // first, what can be in a lootbox?
-  // each lootbox contains 5 items
+  // each lootbox contains 5 items, picked according to a weighting table
 
   const weightingTable = {
     "junk": 5,
     "random_stock": 1,
-    "ticker_ticket": 1,
+    "ticker_ticket": 2,
+    "reroller": 1
   }
 
   const items: Item[] = [];
@@ -385,21 +397,84 @@ function rollLootbox(lootboxClass: string): Item[] {
     const roll = rollWeightedValue(weightingTable);
 
     switch (roll) {
-      case "junk":
+      case "junk":{
         items.push(makeJunkItem());
         break;
-      case "random_stock":
-        const randomTicker = pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.commonTickers, 1)[0];
-        // TODO: come back here
-        //items.push(makeStockItem(randomTicker, ));
+      }
+      case "random_stock":{
+        const ticker = pickRandomTickers(1)[0];
+        const price = await getNathansStockPrice(ticker);
+        items.push(makeStockItem(ticker, 1, price));
         break;
-      case "ticker_ticket":
-        items.push(makeTickerTicketItem(pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.commonTickers, 1)[0]));
+      }
+      case "ticker_ticket":{
+        const tickerWeightingTable = {
+          "common": 3,
+          "uncommon": 2,
+          "rare": 1
+        }
+
+        const tickerRoll = rollWeightedValue(tickerWeightingTable);
+        let ticker: string = "";
+
+        switch (tickerRoll) {
+          case "common":
+            ticker = pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.commonTickers, 1)[0];
+            break;
+          case "uncommon":
+            ticker = pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.uncommonTickers, 1)[0];
+            break;
+          case "rare":
+            ticker = pickRandomItems(getLootboxClassByName(lootboxClass).rollInfo.rareTickers, 1)[0];
+            break;
+        }
+
+        const price = await getNathansStockPrice(ticker);
+        items.push(makeTickerTicketItem(ticker));
         break;
+      }
+      case "reroller": {
+        items.push(makeRerollerItem());
+        break;
+      }
     }
   }
 
-  return [];
+  return items;
+}
+
+type Shop = {
+  lootbox: {
+    lootboxClass: string,
+    price: number
+  },
+  tickerTicket: {
+    ticker: string,
+    price: number
+  },
+  fillerItems: [Item, Item, Item, Item]
+}
+
+async function buildItemShop(): Promise<Shop> {
+  // each time the item shop is rolled, it should contain the following items:
+  // 100% of the time: a lootbox with a unique class (store it in lootboxClasses in the db)
+  // 100% of the time: a random ticker ticket
+
+  const lootboxClass = makeNewLootboxClass();
+  // write to db
+  db.lootboxClasses[lootboxClass.name] = lootboxClass;
+  saveDatabase();
+  const lootboxPrice = randInt(500, 1000);
+
+  const ticker = pickRandomTickers(1)[0];
+  const tickerTicketPrice = randInt(100, 500);
+
+  const fillerWeights = {
+    "randomStock": 5,
+    "reroller": 1,
+    ""
+  };
+
 }
 
 console.log(makeNewLootboxClass());
@@ -410,12 +485,14 @@ app.get("/inventory", (req, res) => {
   res.json(db.inventory);
 });
 
+function getValidTickers(): string[] {
+  return db.inventory
+    .filter((item) => item.type === ItemType.TickerTicket)
+    .map((item) => (item as TickerTicketItem).ticker);
+}
+
 app.get("/valid-tickers", (req, res) => {
-  res.json(
-    db.inventory
-      .filter((item) => item.type === ItemType.TickerTicket)
-      .map((item) => (item as TickerTicketItem).ticker)
-  );
+  res.json(getValidTickers());
 });
 
 app.get("/items/:id", (req, res) => {
