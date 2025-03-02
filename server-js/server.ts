@@ -755,6 +755,16 @@ app.get("/net-worth", async (req, res) => {
   }
 });
 
+app.post("/reset", (req, res) => {
+  db.inventory = [];
+  db.wallet = 10000;
+  db.currentShop = null;
+  db.lootboxClasses = {};
+
+  saveDatabase();
+  res.status(204).send();
+});
+
 app.listen(port, "127.0.0.1", () => {
   console.log(`Server is running on http://127.0.0.1:${port}`);
 });
