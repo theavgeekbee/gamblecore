@@ -32,8 +32,8 @@ interface FillerItem {
     description: string;
     quantity: number;
     purchasedAt: string;
-    expiresAt: string;
-    price: number;
+    expiresAt: string | null;
+    purchasePrice: number;
 }
 
 export default function ItemShop() {
@@ -100,11 +100,10 @@ export default function ItemShop() {
     if (loading) {
         return <div>Loading...</div>;
     } else {
-        return <div>
+        return <div className={"shop"}>
             <h1>Item Shop</h1>
-            <button onClick={(e) => {
+            <button className={"shopButton"} onClick={(e) => {
                 e.preventDefault();
-                (e.target as HTMLButtonElement).disabled = true;
                 buyLootBox();
             }}>
                 <div>
@@ -112,9 +111,8 @@ export default function ItemShop() {
                     <p>{lootBox?.description}</p>
                 </div>
             </button>
-            <button onClick={(e) => {
+            <button className={"shopButton"} onClick={(e) => {
                 e.preventDefault();
-                (e.target as HTMLButtonElement).disabled = true;
                 buyTickerTicket();
             }}>
                 <div>
@@ -122,9 +120,12 @@ export default function ItemShop() {
                     <p>{tickerTicket?.description}</p>
                 </div>
             </button>
-            {fillerItems.map((item, index) => <button key={index}>
+            {fillerItems.map((item, index) => <button className={"shopButton"} key={index} onClick={(e) => {
+                e.preventDefault();
+                buyFiller(item.id);
+            }}>
                 <div>
-                    <h3>{item.name} - ${item.price}</h3>
+                    <h3>{item.name} - ${item.purchasePrice}</h3>
                     <p>{item.description}</p>
                 </div>
             </button>)}

@@ -67,188 +67,176 @@
       "ticker": "LENZ"
     },
     {
-      "id": "bkksv5sy6mc",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 4,
-      "purchasedAt": "2025-03-02T09:32:21.929Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "3mxjnew9x3",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 7,
-      "purchasedAt": "2025-03-02T09:32:28.069Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "emya3725zpj",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 6,
-      "purchasedAt": "2025-03-02T09:32:48.343Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "uorxtepv0g8",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 9,
-      "purchasedAt": "2025-03-02T09:33:01.634Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "huu4euwxbyc",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
+      "id": "v081ivqrkqk",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell LENZ stocks",
       "quantity": 1,
-      "purchasedAt": "2025-03-02T09:33:05.509Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
+      "purchasedAt": "2025-03-02T10:22:13.494Z",
+      "expiresAt": "2025-03-02T10:37:13.494Z",
+      "ticker": "LENZ"
+    },
+    {
+      "id": "m3f0109o78",
+      "name": "reroller",
+      "type": "reroller",
+      "description": "allows you to re-roll a ticker ticket with a random stock",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:22:14.356Z",
+      "expiresAt": null
+    },
+    {
+      "id": "kbahqs78m5",
+      "name": "reroller",
+      "type": "reroller",
+      "description": "allows you to re-roll a ticker ticket with a random stock",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:22:14.356Z",
+      "expiresAt": null
+    },
+    {
+      "id": "1n76b4yrmzy",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:22:14.356Z",
+      "expiresAt": null
+    },
+    {
+      "id": "zcenolzwnfb",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:22:14.356Z",
+      "expiresAt": null
+    },
+    {
+      "id": "kkotk7bg1h7",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell AAPL stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:22:14.418Z",
+      "expiresAt": "2025-03-02T10:37:14.418Z",
       "ticker": "AAPL"
     },
     {
-      "id": "r7zmk2y4kl",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 9,
-      "purchasedAt": "2025-03-02T09:33:12.269Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
+      "id": "qa9ihetup2",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell LENZ stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:22:17.151Z",
+      "expiresAt": "2025-03-02T10:37:17.151Z",
+      "ticker": "LENZ"
     },
     {
-      "id": "yrq3c658neq",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 5,
-      "purchasedAt": "2025-03-02T09:33:18.239Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
+      "id": "wmosmsnovtp",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell LENZ stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:27:54.797Z",
+      "expiresAt": "2025-03-02T10:42:54.797Z",
+      "ticker": "LENZ"
     },
     {
-      "id": "kjfdkja6jck",
+      "id": "0osezzzepb8r",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T06:08:44.467Z",
+      "expiresAt": null,
+      "purchasePrice": 4
+    },
+    {
+      "id": "i95mvptuxte",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T06:08:44.467Z",
+      "expiresAt": null,
+      "purchasePrice": 7
+    },
+    {
+      "id": "4pn3nsm6zb",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell ENTG stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:27:54.103Z",
+      "expiresAt": "2025-03-02T10:42:54.103Z",
+      "ticker": "ENTG"
+    },
+    {
+      "id": "yfchj8ddec8",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:27:54.104Z",
+      "expiresAt": null
+    },
+    {
+      "id": "wsztahvq6o",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell GS stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:27:55.679Z",
+      "expiresAt": "2025-03-02T10:42:55.679Z",
+      "ticker": "GS"
+    },
+    {
+      "id": "7yywcqtpyb2",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell ODD stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:27:57.218Z",
+      "expiresAt": "2025-03-02T10:42:57.218Z",
+      "ticker": "ODD"
+    },
+    {
+      "id": "r41ivd6gzo",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T10:27:57.218Z",
+      "expiresAt": null
+    },
+    {
+      "id": "qok1omvpqcg",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T06:08:44.468Z",
+      "expiresAt": null,
+      "purchasePrice": 7
+    },
+    {
+      "id": "eo84t3c4384",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T06:08:44.467Z",
+      "expiresAt": null,
+      "purchasePrice": 4
+    },
+    {
+      "id": "di7b1dlsp84",
       "name": "AAPL stocks",
       "type": "stock",
       "description": "shares of AAPL, purchased at $240.31",
       "quantity": 9,
-      "purchasedAt": "2025-03-02T09:33:24.508Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "yquhwvfnyea",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 3,
-      "purchasedAt": "2025-03-02T09:33:30.292Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "r0csncg1ycd",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 10,
-      "purchasedAt": "2025-03-02T09:33:36.229Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "7yrgdq66sm",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 10,
-      "purchasedAt": "2025-03-02T09:33:42.286Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "o5rdf2j15q",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 3,
-      "purchasedAt": "2025-03-02T09:33:48.370Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "ip9iqxoig8l",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 5,
-      "purchasedAt": "2025-03-02T09:33:54.288Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "um7nbsvcnjp",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 2,
-      "purchasedAt": "2025-03-02T09:34:00.319Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "upq167kdcoq",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 5,
-      "purchasedAt": "2025-03-02T09:34:48.386Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "v79u3drl3en",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 5,
-      "purchasedAt": "2025-03-02T09:35:48.373Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
-      "ticker": "AAPL"
-    },
-    {
-      "id": "r2ou357pxao",
-      "name": "AAPL stocks",
-      "type": "stock",
-      "description": "shares of AAPL, purchased at $240.31",
-      "quantity": 7,
-      "purchasedAt": "2025-03-02T09:36:52.781Z",
+      "purchasedAt": "2025-03-02T10:28:15.886Z",
       "expiresAt": null,
       "purchasePrice": 240.30999755859375,
       "ticker": "AAPL"
@@ -348,7 +336,7 @@
       }
     }
   },
-  "wallet": 716439.4993743896,
+  "wallet": 677197.683883667,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",
@@ -358,47 +346,6 @@
       "ticker": "LENZ",
       "price": 196
     },
-    "fillerItems": [
-      {
-        "id": "0osezzzepb8r",
-        "name": "junk",
-        "type": "junk",
-        "description": "it's worthless... (unless?)",
-        "quantity": 1,
-        "purchasedAt": "2025-03-02T06:08:44.467Z",
-        "expiresAt": null,
-        "purchasePrice": 4
-      },
-      {
-        "id": "i95mvptuxte",
-        "name": "junk",
-        "type": "junk",
-        "description": "it's worthless... (unless?)",
-        "quantity": 1,
-        "purchasedAt": "2025-03-02T06:08:44.467Z",
-        "expiresAt": null,
-        "purchasePrice": 7
-      },
-      {
-        "id": "eo84t3c4384",
-        "name": "junk",
-        "type": "junk",
-        "description": "it's worthless... (unless?)",
-        "quantity": 1,
-        "purchasedAt": "2025-03-02T06:08:44.467Z",
-        "expiresAt": null,
-        "purchasePrice": 4
-      },
-      {
-        "id": "qok1omvpqcg",
-        "name": "junk",
-        "type": "junk",
-        "description": "it's worthless... (unless?)",
-        "quantity": 1,
-        "purchasedAt": "2025-03-02T06:08:44.468Z",
-        "expiresAt": null,
-        "purchasePrice": 7
-      }
-    ]
+    "fillerItems": []
   }
 }

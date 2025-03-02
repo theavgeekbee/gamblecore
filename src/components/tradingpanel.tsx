@@ -122,7 +122,7 @@ const TradingPanel: React.FC = () => {
 
             <label className="block">Select Stock:</label>
             <select value={selectedStock} onChange={(e) => changeStock(e.target.value)}
-                    className="w-full p-2 rounded bg-gray-700 text-white mb-4">
+                    className="stock-select">
                 {
                     validTickers.map((value, index) => <option key={index} value={value}>{value}</option>)
                 }
@@ -134,12 +134,14 @@ const TradingPanel: React.FC = () => {
             <div className="mt-4">
                 <label className="block">Units:</label>
                 <input type="number" value={units} onChange={(e) => setUnits(parseInt(e.target.value))}
-                       className="w-full p-2 rounded bg-gray-700 text-white"/>
+                       className="units-input"/>
             </div>
 
+            <br />
+
             <div className="flex gap-4 mt-4">
-                <button onClick={executeBuy} className="p-2 bg-green-500 rounded text-white w-1/2">Buy</button>
-                <button onClick={executeSell} className="p-2 bg-red-500 rounded text-white w-1/2">Sell</button>
+                <button onClick={executeBuy} className="buy">Buy</button>
+                <button onClick={executeSell} className="sell">Sell</button>
             </div>
 
             <h3 className="text-lg font-semibold mt-4">Account Balance: <span
@@ -165,11 +167,11 @@ const TradingPanel: React.FC = () => {
                                 ${t.price.toFixed(2)} | <span
                                 className={profitable ? "green" : "red"}>${profit.toFixed(2)}</span> {t.closed ? "(CLOSED)" : ""}
                                 {
-                                    t.closed ? <></> : <button onClick={(e) => {
+                                    t.closed ? <></> : <button className={"closeButton"} onClick={(e) => {
                                         e.preventDefault();
                                         (e.target as HTMLButtonElement).disabled = true;
                                         executeClose(index)
-                                    }}>Close</button>
+                                    }}>(X)</button>
                                 }
                             </div>
                         )

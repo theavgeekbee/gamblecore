@@ -7,25 +7,6 @@ import axios from 'axios';
 
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-// Function to get AI response
-async function getAIResponse(prompt: string): Promise<any> {
-  try {
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 500,
-    });
-    console.log("AI prompt:", prompt);
-    console.log("AI response:", response.choices[0].message.content);
-    return JSON.parse(response.choices[0].message.content!);
-  } catch (error) {
-    console.error('Error getting AI response:', error);
-    throw error;
-  }
-}
-
 type StockPoolStructure = {
   good: string[],
   bad: string[],
