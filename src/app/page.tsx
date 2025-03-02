@@ -3,6 +3,7 @@
 import {ChartDataPoint, SkibidiTerminal, TradeType} from "@/components/skibiditerminal";
 import Randomizer from "@/components/randomizer";
 import {Suspense} from "react";
+import TradingPanel from "@/components/tradingpanel";
 
 export default function Home() {
     return (
@@ -19,6 +20,7 @@ export default function Home() {
                 }]}/>
             </Suspense>
             <Randomizer/>
+            <TradingPanel />
         </main>
     )
 }

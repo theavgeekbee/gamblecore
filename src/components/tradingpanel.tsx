@@ -1,4 +1,11 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
+
+interface Trade {
+    type: string,
+    stock: string,
+    units: number,
+    price: number
+}
 
 const TradingPanel: React.FC = () => {
     const [selectedStock, setSelectedStock] = useState<string>("AAPL");
@@ -6,7 +13,7 @@ const TradingPanel: React.FC = () => {
     const [units, setUnits] = useState<number>(0);
     const [balance, setBalance] = useState<number>(10000);
     const [portfolio, setPortfolio] = useState<{[key: string]: number}>({});
-    const [transactions, setTransactions] = useState<{type: string; stock: string; units: number; price: number}[]>([]);
+    const [transactions, setTransactions] = useState<Trade[]>([]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -16,31 +23,54 @@ const TradingPanel: React.FC = () => {
     }, [selectedStock]);
 
     const handleBuy = () => {
-        const totalCost = units*price;
-        if(totalCost > balance) {
-            alert("Insufficient funds");
-            return;
+        const nUnits = portfolio[selectedStock] || 0;
+        console.log(nUnits);
+        if (nUnits  < 0) {
+            // buy back shorted stocks and return the leverage, and then buy the rest
+            const leverage = nUnits * price;
+            setBalance(balance - leverage);
+            // we still have to buy the rest
+            const remaining = units + nUnits;
+            setBalance(balance - leverage - remaining * price);
+        } else {
+            setBalance(balance - units * price);
         }
-        setBalance(balance - totalCost);
-        setPortfolio((prev) => ({
-            ...prev,
-            [selectedStock]: (prev[selectedStock] || 0) + units,
-        }));
-        setTransactions([...transactions, {type: "Buy", stock: selectedStock, units, price}]);
-        console.log(`Buying ${units} units at $${price} each.`);
+        setPortfolio({
+            ...portfolio,
+            [selectedStock]: (portfolio[selectedStock] || 0) + units
+        })
+        setTransactions([...transactions, {
+            type: "Buy",
+            stock: selectedStock,
+            units,
+            price,
+        }])
     };
     const handleSell = () => {
-        if((portfolio[selectedStock] || 0) < units) {
-            alert("Not enough shares to sell");
-            return;
+        const nUnits = portfolio[selectedStock] || 0;
+        if (units > nUnits) {
+            // liquidate nUnits stocks and short units - nUnits stocks
+            setBalance(balance + units * price);
+            // short units - nUnits stocks
+            const short = units - nUnits;
+            const leverage = short * price;
+            setBalance(balance + units * price - leverage);
+        } else {
+            // sell stock
+            setBalance(balance + units * price);
         }
-        setBalance(balance+units*price);
-        setPortfolio((prev) => ({
-            ...prev,
-            [selectedStock]: prev[selectedStock] - units,
-        }));
-        setTransactions([...transactions, {type: "Sell", stock: selectedStock, units, price}]);
-        console.log(`Selling ${units} units at $${price} each.`);
+        setPortfolio({
+            ...portfolio,
+            [selectedStock]: (portfolio[selectedStock] || 0) - units
+        })
+        setTransactions([
+            ...transactions, {
+                type: "Sell",
+                stock: selectedStock,
+                units,
+                price
+            }
+        ])
     };
 
     return(
