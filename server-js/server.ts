@@ -62,14 +62,39 @@ function pickRandomUniqueStrings(list: string[], n: number): string[] {
   return result;
 }
 
+// pick n random items from a list
+function pickRandomItems<T>(list: T[], n: number): T[] {
+  const result: T[] = [];
+  while (result.length < n) {
+    const index = Math.floor(Math.random() * list.length);
+    result.push(list[index]);
+  }
+  return result;
+}
+
+// a function to pick n random symbols from the symbols data
+const symbolsList = Object.keys(symbols);
+
+function pickRandomTickers(n: number): string[] {
+  return pickRandomUniqueStrings(symbolsList, n);
+}
+
 const app = express();
 const port = 3500;
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 type BaseItem = {
   id: string,
+  name: string,
   type: ItemType,
+  description: string
   quantity: number,
   purchasedAt: Date,
   expiresAt: Date | null,
@@ -101,6 +126,8 @@ type LootboxItem = BaseItem & {
   type: ItemType.Lootbox,
   class: string,
 }
+
+//type RerollerItem
 
 type Item = StockItem | ShortItem | TickerTicketItem | LootboxItem;
 
@@ -197,17 +224,76 @@ const lootboxAdjectives = [
   "cracked"
 ];
 
+function makeStockItem(): StockItem {
+  const id = generateUniqueId();
+  const name = "Stock";
+  const type = ItemType.Stock;
+  const description = "some shares of a company";
+  const quantity = 1;
+  const purchasePrice = Math.floor(Math.random() * 1000);
+  const purchasedAt = new Date();
+  const expiresAt = null;
+
+  return {
+    id,
+    name,
+    type,
+    description,
+    quantity,
+    purchasePrice,
+    purchasedAt,
+    expiresAt,
+  };
+}
+
 function makeNewLootboxClass(): LootboxClass {
   const name = Array.from({ length: 3 }, () => lootboxAdjectives[Math.floor(Math.random() * lootboxAdjectives.length)]).join(' ') + ' lootbox';
+
+  // pick common tickers from the symbols data
+  const commonTickers = pickRandomTickers(20);
+  // pick uncommon tickers from the spicy and bad pools
+  const uncommonTickers = pickRandomItems(stockPool.spicy.concat(stockPool.bad), 10);
+  // pick rare tickers from the good pool
+  const rareTickers = pickRandomItems(stockPool.good, 5);
 
   return {
     name,
     rollInfo: {
-      commonTickers: [],
-      uncommonTickers: [],
-      rareTickers: [],
+      commonTickers,
+      uncommonTickers,
+      rareTickers,
     }
   };
+}
+
+function getLootboxClassByName(name: string): LootboxClass {
+  return db.lootboxClasses[name]!;
+}
+
+// make a new lootbox item given a class
+function makeLootboxFromClass(lootboxClass: string): LootboxItem {
+  const id = generateUniqueId();
+  const quantity = 1;
+  const purchasedAt = new Date();
+  const expiresAt = null;
+
+  return {
+    id,
+    name: getLootboxClassByName(lootboxClass).name,
+    type: ItemType.Lootbox,
+    description: `a very cool lootbox full of surprises`,
+    quantity,
+    purchasedAt,
+    expiresAt,
+    class: lootboxClass,
+  };
+}
+
+// roll a lootbox and return the items
+function rollLootbox(lootboxClass: string): Item[] {
+  // first, what can be in a lootbox?
+
+  return [];
 }
 
 console.log(makeNewLootboxClass());
