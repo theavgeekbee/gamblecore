@@ -17,5 +17,5 @@ export interface Trade {
     price: number,
     closed: boolean
 }
-export const waltuh: string = "http://localhost:3500/";
-export const waltuh2: string = "http://localhost:5000/";
+export const waltuh: string = "https://gamble-express.nwlee.tech/";
+export const waltuh2: string = "https://gamble-flask.nwlee.tech/";

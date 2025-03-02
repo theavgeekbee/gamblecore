@@ -1,303 +1,24 @@
 {
   "inventory": [
     {
-      "id": "znrvxhehp2",
+      "id": "dzzxzb7ixcf",
       "name": "ticker ticket",
       "type": "tickerTicket",
       "description": "allows you to buy and sell AAPL stocks",
       "quantity": 1,
-      "purchasedAt": "2025-03-02T09:17:19.275Z",
-      "expiresAt": "2025-03-02T09:32:19.275Z",
+      "purchasedAt": "2025-03-02T12:24:03.267Z",
+      "expiresAt": "2025-03-02T12:39:03.267Z",
       "ticker": "AAPL"
     },
     {
-      "id": "kvuqb80stxa",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T09:17:33.791Z",
-      "expiresAt": null
-    },
-    {
-      "id": "nofcwbxvtc",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T09:17:33.791Z",
-      "expiresAt": null
-    },
-    {
-      "id": "p8dtenxocgh",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell LMT stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T09:17:34.931Z",
-      "expiresAt": "2025-03-02T09:32:34.931Z",
-      "ticker": "LMT"
-    },
-    {
-      "id": "zdntrtunkx",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T09:17:34.931Z",
-      "expiresAt": null
-    },
-    {
-      "id": "osbd63kr50h",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T09:17:34.931Z",
-      "expiresAt": null
-    },
-    {
-      "id": "b854idp3lb8",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell LENZ stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T09:29:28.382Z",
-      "expiresAt": "2025-03-02T09:44:28.382Z",
-      "ticker": "LENZ"
-    },
-    {
-      "id": "v081ivqrkqk",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell LENZ stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:13.494Z",
-      "expiresAt": "2025-03-02T10:37:13.494Z",
-      "ticker": "LENZ"
-    },
-    {
-      "id": "m3f0109o78",
-      "name": "reroller",
-      "type": "reroller",
-      "description": "allows you to re-roll a ticker ticket with a random stock",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:14.356Z",
-      "expiresAt": null
-    },
-    {
-      "id": "kbahqs78m5",
-      "name": "reroller",
-      "type": "reroller",
-      "description": "allows you to re-roll a ticker ticket with a random stock",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:14.356Z",
-      "expiresAt": null
-    },
-    {
-      "id": "1n76b4yrmzy",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:14.356Z",
-      "expiresAt": null
-    },
-    {
-      "id": "zcenolzwnfb",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:14.356Z",
-      "expiresAt": null
-    },
-    {
-      "id": "kkotk7bg1h7",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell AAPL stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:14.418Z",
-      "expiresAt": "2025-03-02T10:37:14.418Z",
-      "ticker": "AAPL"
-    },
-    {
-      "id": "qa9ihetup2",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell LENZ stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:22:17.151Z",
-      "expiresAt": "2025-03-02T10:37:17.151Z",
-      "ticker": "LENZ"
-    },
-    {
-      "id": "wmosmsnovtp",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell LENZ stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:27:54.797Z",
-      "expiresAt": "2025-03-02T10:42:54.797Z",
-      "ticker": "LENZ"
-    },
-    {
-      "id": "0osezzzepb8r",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T06:08:44.467Z",
+      "id": "g1hb602l2eh",
+      "name": "AAPL stocks",
+      "type": "stock",
+      "description": "shares of AAPL, purchased at $240.15",
+      "quantity": 7,
+      "purchasedAt": "2025-03-02T12:24:19.359Z",
       "expiresAt": null,
-      "purchasePrice": 4
-    },
-    {
-      "id": "i95mvptuxte",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T06:08:44.467Z",
-      "expiresAt": null,
-      "purchasePrice": 7
-    },
-    {
-      "id": "4pn3nsm6zb",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell ENTG stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:27:54.103Z",
-      "expiresAt": "2025-03-02T10:42:54.103Z",
-      "ticker": "ENTG"
-    },
-    {
-      "id": "yfchj8ddec8",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:27:54.104Z",
-      "expiresAt": null
-    },
-    {
-      "id": "wsztahvq6o",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell GS stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:27:55.679Z",
-      "expiresAt": "2025-03-02T10:42:55.679Z",
-      "ticker": "GS"
-    },
-    {
-      "id": "7yywcqtpyb2",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell ODD stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:27:57.218Z",
-      "expiresAt": "2025-03-02T10:42:57.218Z",
-      "ticker": "ODD"
-    },
-    {
-      "id": "r41ivd6gzo",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:27:57.218Z",
-      "expiresAt": null
-    },
-    {
-      "id": "qok1omvpqcg",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T06:08:44.468Z",
-      "expiresAt": null,
-      "purchasePrice": 7
-    },
-    {
-      "id": "eo84t3c4384",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T06:08:44.467Z",
-      "expiresAt": null,
-      "purchasePrice": 4
-    },
-    {
-      "id": "8l7nfbzrc6j",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell LENZ stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T10:44:13.339Z",
-      "expiresAt": "2025-03-02T10:59:13.339Z",
-      "ticker": "LENZ"
-    },
-    {
-      "id": "wfcbmwxlu7k",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell QUBT stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T11:18:28.698Z",
-      "expiresAt": "2025-03-02T11:33:28.698Z",
-      "ticker": "QUBT"
-    },
-    {
-      "id": "dxsaa3ae98c",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell MHH stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T11:18:31.263Z",
-      "expiresAt": "2025-03-02T11:33:31.263Z",
-      "ticker": "MHH"
-    },
-    {
-      "id": "izsr78fqxqn",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell IAS stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T11:18:32.198Z",
-      "expiresAt": "2025-03-02T11:33:32.198Z",
-      "ticker": "IAS"
-    },
-    {
-      "id": "3eey1ozwuik",
-      "name": "ticker ticket",
-      "type": "tickerTicket",
-      "description": "allows you to buy and sell CTSH stocks",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T11:18:34.369Z",
-      "expiresAt": "2025-03-02T11:33:34.369Z",
-      "ticker": "CTSH"
-    },
-    {
-      "id": "77222y8chmm",
-      "name": "junk",
-      "type": "junk",
-      "description": "it's worthless... (unless?)",
-      "quantity": 1,
-      "purchasedAt": "2025-03-02T11:18:34.370Z",
-      "expiresAt": null
-    },
-    {
-      "id": "xcqngha4sta",
-      "name": "AAPL shorts",
-      "type": "short",
-      "description": "shorts of AAPL, purchased at $240.31",
-      "quantity": 2,
-      "purchasedAt": "2025-03-02T11:18:41.123Z",
-      "expiresAt": null,
-      "purchasePrice": 240.30999755859375,
+      "purchasePrice": 240.14999389648438,
       "ticker": "AAPL"
     }
   ],
@@ -395,7 +116,7 @@
       }
     }
   },
-  "wallet": 649944.1392803192,
+  "wallet": 644951.8399181366,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",
