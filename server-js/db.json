@@ -9,6 +9,72 @@
       "purchasedAt": "2025-03-02T07:07:01.675Z",
       "expiresAt": null,
       "ticker": "AAPL"
+    },
+    {
+      "id": "nvycqrkgr4",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell LENZ stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T08:54:57.281Z",
+      "expiresAt": "2025-03-02T09:09:57.281Z",
+      "ticker": "LENZ"
+    },
+    {
+      "id": "fov7dqvjbk",
+      "name": "sweaty epic nerfed lootbox",
+      "type": "lootbox",
+      "description": "a very cool lootbox full of surprises",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T09:11:59.462Z",
+      "expiresAt": null,
+      "class": "sweaty epic nerfed lootbox"
+    },
+    {
+      "id": "aj2l3v0cnnj",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T09:11:59.462Z",
+      "expiresAt": null
+    },
+    {
+      "id": "451nbej49fh",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T09:11:59.462Z",
+      "expiresAt": null
+    },
+    {
+      "id": "acj5zju8rhd",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T09:11:59.462Z",
+      "expiresAt": null
+    },
+    {
+      "id": "v9g2bsx3eon",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell AAPL stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T09:11:59.481Z",
+      "expiresAt": "2025-03-02T09:26:59.481Z",
+      "ticker": "AAPL"
+    },
+    {
+      "id": "nruk7gvcnc",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T09:11:59.481Z",
+      "expiresAt": null
     }
   ],
   "lootboxClasses": {
@@ -105,7 +171,7 @@
       }
     }
   },
-  "wallet": 30000,
+  "wallet": 703.8403625488281,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",

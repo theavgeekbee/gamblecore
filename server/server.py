@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Simulated start time
-start_time = datetime(2025, 2, 26, 14, 42, 0)  # Example start time
+start_time = datetime(2025, 2, 26, 14, 30, 0)  # Example start time
 
 # Directory for cached stock data
 cache_dir = "stock_data/"
@@ -32,8 +32,17 @@ def cache_stock_data(ticker, data):
         json.dump(data, f)
 
 # Time rate multiplier
-time_rate_multiplier = 1
+time_rate_multiplier = 10
 last_update_time = datetime.now()
+
+# convert strings to datetimes, and leave datetimes untouched
+def unfuck(thingy):
+    if isinstance(thingy, str):
+        try:
+            return datetime.fromisoformat(thingy)
+        except ValueError:
+            return thingy
+    return thingy
 
 def calculate_simulated_time():
     global start_time, last_update_time, time_rate_multiplier
@@ -87,7 +96,7 @@ def get_stock_data():
         stock_info = stock.info
         hist = stock.history(period="8d", interval="1m").reset_index().to_dict(orient='records')
         for record in hist:
-            record['Datetime'] = record['Datetime'].replace(tzinfo=None)
+            record['Datetime'] = unfuck(record['Datetime']).replace(tzinfo=None)
         cache_stock_data(ticker, {"stock_info": stock_info, "historical_data": hist})
 
     # Calculate simulated current time
@@ -97,11 +106,11 @@ def get_stock_data():
     #last_update_time = datetime.now()
 
     # Find the closest historical data point
-    closest_data_point = min(hist, key=lambda x: abs(x['Datetime'] - simulated_current_time))
+    closest_data_point = min(hist, key=lambda x: abs(unfuck(x['Datetime']) - simulated_current_time))
 
     # Filter out future data points
     filtered_hist = [
-        record for record in hist if record['Datetime'] <= simulated_current_time
+        record for record in hist if unfuck(record['Datetime']) <= simulated_current_time
     ]
 
     return jsonify({
@@ -152,7 +161,7 @@ def get_stock_info():
         stock_info = stock.info
         hist = stock.history(period="8d", interval="1m").reset_index().to_dict(orient='records')
         for record in hist:
-            record['Datetime'] = record['Datetime'].replace(tzinfo=None)
+            record['Datetime'] = unfuck(record['Datetime']).replace(tzinfo=None)
         cache_stock_data(ticker, {"stock_info": stock_info, "historical_data": hist})
 
     # Calculate simulated current time
@@ -162,7 +171,7 @@ def get_stock_info():
     #last_update_time = datetime.now()
 
     # Find the closest historical data point
-    closest_data_point = min(hist, key=lambda x: abs(convert_to_datetime(x['Datetime'] - simulated_current_time)))
+    closest_data_point = min(hist, key=lambda x: abs(unfuck(x['Datetime']) - simulated_current_time))
 
     print(closest_data_point)
 

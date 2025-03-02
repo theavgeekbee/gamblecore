@@ -47,7 +47,9 @@ type SymbolsDataStructure = Record<string, {
 // import data from symbols_data.json
 
 const symbolsData = fs.readFileSync('symbols_data.json', 'utf8');
-const symbols: SymbolsDataStructure = JSON.parse(symbolsData);
+//const symbols: SymbolsDataStructure = JSON.parse(symbolsData);
+// STUPID HACK: no more pure random cause some stocks have like no dat
+const symbols = Array.from(new Set([...stockPool.bad, ...stockPool.good, ...stockPool.spicy]));
 
 // pick n random unique strings from a list
 function pickRandomUniqueStrings(list: string[], n: number): string[] {
@@ -593,8 +595,8 @@ app.post("/shop/buy-lootbox", async (req, res) => {
 
   db.wallet -= price;
 
-  const items = await rollLootbox(db.currentShop!.lootbox.lootboxClass);
-  db.inventory.push(lootboxItem, ...items);
+  const items = await rollLootbox(lootboxItem.class);
+  db.inventory.push(...items);
   saveDatabase();
   res.json({ lootboxItem, items });
 });
