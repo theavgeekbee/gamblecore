@@ -5,6 +5,7 @@ import Randomizer from "@/components/randomizer";
 import {Suspense} from "react";
 import TradingPanel from "@/components/tradingpanel";
 import InventoryList from "@/components/inventorylist";
+import ItemShop from "@/components/itemshop";
 
 export default function Home() {
     return (
@@ -23,6 +24,7 @@ export default function Home() {
                 <div className={"row"}>
                     <Randomizer/>
                     <InventoryList />
+                    <ItemShop />
                 </div>
             </div>
         </main>

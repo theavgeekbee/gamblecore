@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 
 interface InventoryItem {
     type: string;
@@ -21,7 +21,7 @@ const InventoryList: React.FC = () => {
             try {
                 console.log("Fetching inventory...");
                 
-                const response = await fetch("https://ae13-12-7-77-162.ngrok-free.app/inventory", {
+                const response = await fetch("https://42d9-12-7-77-162.ngrok-free.app/inventory", {
                     method: "GET",
                     headers: {
                         "ngrok-skip-browser-warning": "true",

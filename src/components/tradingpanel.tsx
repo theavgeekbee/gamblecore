@@ -2,8 +2,10 @@ import React, {useState, useEffect} from "react";
 import {global_vars} from "@/utils/global";
 
 export const handleClose = (index: number, price: number) => {
-    global_vars.trades[index].closed = true;7
-    global_vars.balance += price * global_vars.trades[index].units;56
+    global_vars.trades[index].closed = true;
+    7
+    global_vars.balance += price * global_vars.trades[index].units;
+    56
 }
 
 // opens a short position
@@ -46,8 +48,21 @@ const TradingPanel: React.FC = () => {
     const [price, setPrice] = useState<number>(100);
     const [units, setUnits] = useState<number>(0);
     const [refresh, setRefresh] = useState<boolean>(false);
+    const [validTickers, setValidTickers] = useState<string[]>([]);
 
     useEffect(() => {
+        fetch("https://42d9-12-7-77-162.ngrok-free.app/valid-tickers", {
+            method: "GET",
+            headers: {
+                "ngrok-skip-browser-warning": "true",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(r => r.json())
+            .then(r => {
+                setValidTickers(r)
+            });
+
         const interval = setInterval(() => {
             setPrice(global_vars.current_price);
         }, 10);
@@ -79,10 +94,10 @@ const TradingPanel: React.FC = () => {
             <label className="block">Select Stock:</label>
             <select value={selectedStock} onChange={(e) => changeStock(e.target.value)}
                     className="w-full p-2 rounded bg-gray-700 text-white mb-4">
-                <option value="APPL">Apple (AAPL)</option>
-                <option value="TSLA">Tesla (TSLA)</option>
-                <option value="GOOG">Google (GOOG)</option>
-                <option value="AMZN">Amazon (AMZN)</option>
+                {
+                    validTickers.map((value, index) => <option key={index} value={value}>{value}</option>)
+                }
+
             </select>
 
             <p className="text-lg">Current Price: <span className="font-bold">${price.toFixed(2)}</span></p>
@@ -99,7 +114,10 @@ const TradingPanel: React.FC = () => {
             </div>
 
             <h3 className="text-lg font-semibold mt-4">Account Balance: <span
-                className="font-bold">${global_vars.balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></h3>
+                className="font-bold">${global_vars.balance.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}</span></h3>
 
             <h3 className="text-lg font-semibold mt-4">Open Positions</h3>
             <ul className="mt-2">
@@ -111,10 +129,16 @@ const TradingPanel: React.FC = () => {
                         const profit = Math.abs((price - t.price) * t.units) * t.units;
                         return (
                             <div key={index}>
-                                {t.type === "Buy" ? <span className={"green"}>Long</span> : <span className={"red"}>Short</span>} {t.units} share(s) of {t.stock} at
-                                ${t.price.toFixed(2)} | <span className={profitable ? "green" : "red"}>${profit.toFixed(2)}</span> {t.closed ? "(CLOSED)" : ""}
+                                {t.type === "Buy" ? <span className={"green"}>Long</span> :
+                                    <span className={"red"}>Short</span>} {t.units} share(s) of {t.stock} at
+                                ${t.price.toFixed(2)} | <span
+                                className={profitable ? "green" : "red"}>${profit.toFixed(2)}</span> {t.closed ? "(CLOSED)" : ""}
                                 {
-                                    t.closed ? <></> : <button onClick={(_) => executeClose(index)}>Close</button>
+                                    t.closed ? <></> : <button onClick={(e) => {
+                                        e.preventDefault();
+                                        (e.target as HTMLButtonElement).disabled = true;
+                                        executeClose(index)
+                                    }}>Close</button>
                                 }
                             </div>
                         )
