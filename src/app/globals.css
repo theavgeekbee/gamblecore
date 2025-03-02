@@ -7,3 +7,15 @@ html {
 .trade {
     font-family: monospace;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100vw;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}

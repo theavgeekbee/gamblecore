@@ -3,21 +3,11 @@
 import {useEffect, useRef, useState} from "react";
 import {global_vars} from "@/utils/global";
 
-export enum TradeType {
-    BUY, SELL
-}
-
 export interface ChartDataPoint {
     high: number;
     low: number;
     open: number;
     close: number;
-}
-
-export interface Trade {
-    entry_price: number;
-    type: TradeType,
-    units: number;
 }
 
 function serializeHistoricalData(data: any[]): ChartDataPoint[] {
@@ -31,11 +21,7 @@ function serializeHistoricalData(data: any[]): ChartDataPoint[] {
     })
 }
 
-export function SkibidiTerminal(
-    props: {
-        trades: Trade[]
-    }
-) {
+export function SkibidiTerminal() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
 
@@ -100,7 +86,6 @@ export function SkibidiTerminal(
 
             for (let i = Math.max(data.length - numCandles, 0); i < data.length; i++) {
                 const din = data[i];
-                console.log(data);
                 const candleWidth = 10;
 
                 const bodyTop = Math.max(din.open, din.close);
@@ -128,26 +113,25 @@ export function SkibidiTerminal(
             // draw a line at the current close
             ctx.fillStyle = "purple";
             ctx.fillRect(60, convertPriceToY(data[data.length - 1].close), 5000, 2);
-
-            initialX = 65;
-            for (let i = 0; i < props.trades.length; i++) {
-                const trade = props.trades[i];
-                const location = convertPriceToY(trade.entry_price);
-                ctx.fillStyle = trade.type === TradeType.BUY ? "blue" : "red";
+            for (let i = 0; i < global_vars.trades.length; i++) {
+                const trade = global_vars.trades[i];
+                if (trade.closed) continue;
+                const location = convertPriceToY(trade.price);
+                ctx.fillStyle = trade.type === "Buy" ? "blue" : "red";
                 ctx.fillRect(60, location, 5000, 2)
                 // write text above it
                 ctx.font = "13px Arial";
 
                 const currentPrice = data[data.length - 1].close;
-                const isProfitable = trade.type === TradeType.BUY ? currentPrice > trade.entry_price
-                    : currentPrice < trade.entry_price;
-                const profit = trade.type === TradeType.BUY ? currentPrice - trade.entry_price
-                    : trade.entry_price - currentPrice;
+                const isProfitable = trade.type === "Buy" ? currentPrice > trade.price
+                    : currentPrice < trade.price;
+                const profit = trade.type === "Buy" ? currentPrice - trade.price
+                    : trade.price - currentPrice;
 
-                const truncated = Math.trunc(profit * 100) / 100;
+                const totalProfit = Math.abs(profit * trade.units);
                 ctx.fillStyle = isProfitable ? "green" : "red";
                 ctx.fillText(
-                    `${trade.units} | $${trade.entry_price} | ${isProfitable ? "" : "-"}$${Math.abs(truncated)}`,
+                    `${trade.units} | $${trade.price.toFixed(2)} | ${isProfitable ? "" : "-"}$${totalProfit.toFixed(2)}`,
                     65,
                     location - 8
                 )
@@ -156,8 +140,8 @@ export function SkibidiTerminal(
 
         setTimeout(() => {
             draw();
-            setInterval(draw, 1000);
-        }, 5000);
+            setInterval(draw, 2000);
+        }, 2000);
     }, []);
 
     return <canvas ref={canvasRef} width={700} height={500}/>;
