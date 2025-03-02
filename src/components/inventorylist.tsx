@@ -19,16 +19,35 @@ const InventoryList: React.FC = () => {
     useEffect(() => {
         const fetchInventory = async () => {
             try {
-                const response = await fetch("https://ae13-12-7-77-162.ngrok-free.app/inventory");
-                if(!response.ok) throw new Error("Failed to fetch inventory");
-                const data: string = await response.text();
-                console.log(data);
-                //setInventory(data);
-            } catch(err) {
+                console.log("Fetching inventory...");
+                
+                const response = await fetch("https://ae13-12-7-77-162.ngrok-free.app/inventory", {
+                    method: "GET",
+                    headers: {
+                        "ngrok-skip-browser-warning": "true",
+                        "Content-Type": "application/json"
+                    }
+                });
+            
+                console.log("Response status:", response.status);
+                console.log("Response headers:", response.headers);
+            
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch inventory: ${response.status} ${response.statusText}`);
+                }
+            
+                const text = await response.text();  // First, get the raw response to inspect
+                console.log("Raw response:", text);
+            
+                // Attempt to parse JSON
+                const data: InventoryItem[] = JSON.parse(text);
+                setInventory(data);
+            } catch (err) {
+                console.error("Error fetching inventory:", err);
                 setError(err instanceof Error ? err.message : "Unknown error");
             } finally {
                 setLoading(false);
-            }
+            }            
         };
         fetchInventory();
     }, []);
