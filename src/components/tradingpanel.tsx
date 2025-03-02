@@ -100,7 +100,7 @@ const TradingPanel: React.FC = () => {
                 setBalance(data['wallet'])
             });
             setPrice(global_vars.current_price);
-        }, 10);
+        }, 2000);
         return () => clearInterval(interval);
     }, [selectedStock]);
 
