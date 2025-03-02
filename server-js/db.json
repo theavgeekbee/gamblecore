@@ -239,6 +239,66 @@
       "purchasedAt": "2025-03-02T10:44:13.339Z",
       "expiresAt": "2025-03-02T10:59:13.339Z",
       "ticker": "LENZ"
+    },
+    {
+      "id": "wfcbmwxlu7k",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell QUBT stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T11:18:28.698Z",
+      "expiresAt": "2025-03-02T11:33:28.698Z",
+      "ticker": "QUBT"
+    },
+    {
+      "id": "dxsaa3ae98c",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell MHH stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T11:18:31.263Z",
+      "expiresAt": "2025-03-02T11:33:31.263Z",
+      "ticker": "MHH"
+    },
+    {
+      "id": "izsr78fqxqn",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell IAS stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T11:18:32.198Z",
+      "expiresAt": "2025-03-02T11:33:32.198Z",
+      "ticker": "IAS"
+    },
+    {
+      "id": "3eey1ozwuik",
+      "name": "ticker ticket",
+      "type": "tickerTicket",
+      "description": "allows you to buy and sell CTSH stocks",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T11:18:34.369Z",
+      "expiresAt": "2025-03-02T11:33:34.369Z",
+      "ticker": "CTSH"
+    },
+    {
+      "id": "77222y8chmm",
+      "name": "junk",
+      "type": "junk",
+      "description": "it's worthless... (unless?)",
+      "quantity": 1,
+      "purchasedAt": "2025-03-02T11:18:34.370Z",
+      "expiresAt": null
+    },
+    {
+      "id": "xcqngha4sta",
+      "name": "AAPL shorts",
+      "type": "short",
+      "description": "shorts of AAPL, purchased at $240.31",
+      "quantity": 2,
+      "purchasedAt": "2025-03-02T11:18:41.123Z",
+      "expiresAt": null,
+      "purchasePrice": 240.30999755859375,
+      "ticker": "AAPL"
     }
   ],
   "lootboxClasses": {
@@ -335,7 +395,7 @@
       }
     }
   },
-  "wallet": 667392.4190654755,
+  "wallet": 649944.1392803192,
   "currentShop": {
     "lootbox": {
       "lootboxClass": "sweaty epic nerfed lootbox",

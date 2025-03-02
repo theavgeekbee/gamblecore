@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from "react";
 import {global_vars, waltuh} from "@/utils/global";
 import Randomizer from "@/components/randomizer";
+import WarningTooltip from "@/components/tooltip";
 
 export const handleClose = (index: number) => {
+    const trade = global_vars.trades[index];
+
+    if (trade.stock !== global_vars.viewing) {
+        alert("You can't close a trade for a stock you're not viewing!");
+    }
+
     fetch(waltuh + "stocks/sell/" + global_vars.trades[index].id, {
         method: "POST",
         headers: {
@@ -16,9 +23,9 @@ export const handleClose = (index: number) => {
 export const handleSell = (stock: string, units: number) => {
     fetch(waltuh + "stocks/buy-short/" + stock + "?quantity=" + units, {
         method: "POST",
-            headers: {
+        headers: {
             "ngrok-skip-browser-warning": "true",
-                "Content-Type": "application/json"
+            "Content-Type": "application/json"
         }
     }).then(r => r.json()).then(data => {
         global_vars.trades.push(
@@ -137,7 +144,7 @@ const TradingPanel: React.FC = () => {
                        className="units-input"/>
             </div>
 
-            <br />
+            <br/>
 
             <div className="flex gap-4 mt-4">
                 <button onClick={executeBuy} className="buy">Buy</button>
@@ -150,7 +157,7 @@ const TradingPanel: React.FC = () => {
                 maximumFractionDigits: 2
             })}</span></h3>
 
-            <Randomizer />
+            <Randomizer/>
 
             <h3 className="text-lg font-semibold mt-4">Open Positions</h3>
             <ul className="mt-2">
@@ -165,13 +172,17 @@ const TradingPanel: React.FC = () => {
                                 {t.type === "Buy" ? <span className={"green"}>Long</span> :
                                     <span className={"red"}>Short</span>} {t.units} share(s) of {t.stock} at
                                 ${t.price.toFixed(2)} | <span
-                                className={profitable ? "green" : "red"}>${profit.toFixed(2)}</span> {t.closed ? "(CLOSED)" : ""}
+                                className={profitable ? "green" : "red"}>${profit.toFixed(2)}</span>
                                 {
-                                    t.closed ? <></> : <button className={"closeButton"} onClick={(e) => {
+                                    t.closed || t.stock !== global_vars.viewing ? <></> : <button className={"closeButton"} onClick={(e) => {
                                         e.preventDefault();
                                         (e.target as HTMLButtonElement).disabled = true;
                                         executeClose(index)
                                     }}>(X)</button>
+                                }
+                                {
+                                    t.stock === global_vars.viewing ? <></> :
+                                        <WarningTooltip text={"You aren't viewing this stock! Prices may be inaccurate."} />
                                 }
                             </div>
                         )
