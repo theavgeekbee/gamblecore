@@ -1,3 +1,4 @@
+import { waltuh } from "@/utils/global";
 import {useEffect, useState} from "react";
 
 interface LootBox {
@@ -30,7 +31,7 @@ export default function ItemShop() {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        fetch("https://42d9-12-7-77-162.ngrok-free.app/shop", {
+        fetch(waltuh + "shop", {
             method: "GET",
             headers: {
                 "ngrok-skip-browser-warning": "true",
@@ -47,7 +48,7 @@ export default function ItemShop() {
     }, []);
 
     function buyLootBox() {
-        fetch("https://42d9-12-7-77-162.ngrok-free.app/shop/buy-lootbox", {
+        fetch(waltuh + "shop/buy-lootbox", {
             method: "POST",
             headers: {
                 "ngrok-skip-browser-warning": "true",
@@ -58,7 +59,7 @@ export default function ItemShop() {
             .catch(e => console.error(e));
     }
     function buyTickerTicket() {
-        fetch("https://42d9-12-7-77-162.ngrok-free.app/shop/buy-ticker-ticket", {
+        fetch(waltuh + "shop/buy-ticker-ticket", {
             method: "POST",
             headers: {
                 "ngrok-skip-browser-warning": "true",

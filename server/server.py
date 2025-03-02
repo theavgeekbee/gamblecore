@@ -32,7 +32,7 @@ def cache_stock_data(ticker, data):
         json.dump(data, f)
 
 # Time rate multiplier
-time_rate_multiplier = 60
+time_rate_multiplier = 1
 last_update_time = datetime.now()
 
 def calculate_simulated_time():

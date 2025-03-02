@@ -1,6 +1,7 @@
 "use client";
 
 import React, {useState, useEffect} from "react";
+import {global_vars, waltuh} from "@/utils/global";
 
 interface InventoryItem {
     type: string;
@@ -21,7 +22,7 @@ const InventoryList: React.FC = () => {
             try {
                 console.log("Fetching inventory...");
                 
-                const response = await fetch("https://42d9-12-7-77-162.ngrok-free.app/inventory", {
+                const response = await fetch(waltuh + "inventory", {
                     method: "GET",
                     headers: {
                         "ngrok-skip-browser-warning": "true",

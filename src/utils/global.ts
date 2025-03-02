@@ -18,3 +18,5 @@ export interface Trade {
     price: number,
     closed: boolean
 }
+export const waltuh: string = "https://7834-12-7-77-162.ngrok-free.app/";
+export const waltuh2: string = "https://believes-wrong-kerry-tree.trycloudflare.com/";

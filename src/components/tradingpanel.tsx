@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {global_vars} from "@/utils/global";
+import {global_vars, waltuh} from "@/utils/global";
 
 export const handleClose = (index: number, price: number) => {
     global_vars.trades[index].closed = true;
@@ -51,7 +51,7 @@ const TradingPanel: React.FC = () => {
     const [validTickers, setValidTickers] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch("https://42d9-12-7-77-162.ngrok-free.app/valid-tickers", {
+        fetch(waltuh + "valid-tickers", {
             method: "GET",
             headers: {
                 "ngrok-skip-browser-warning": "true",

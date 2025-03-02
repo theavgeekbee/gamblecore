@@ -1,7 +1,7 @@
 "use client";
 
 import {useEffect, useRef, useState} from "react";
-import {global_vars} from "@/utils/global";
+import {global_vars, waltuh2} from "@/utils/global";
 
 export interface ChartDataPoint {
     high: number;
@@ -29,7 +29,7 @@ export function SigmaTerminal() {
         let data: ChartDataPoint[] = [];
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:5000/stock?ticker=" + global_vars.viewing); // Replace with actual API endpoint
+                const response = await fetch(waltuh2 + "stock?ticker=" + global_vars.viewing); // Replace with actual API endpoint
                 let normal_data = await response.json();
                 console.log(normal_data);
                 let historical_data = normal_data['historical_data'];
