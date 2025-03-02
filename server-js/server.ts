@@ -57,7 +57,7 @@ function pickRandomItems<T>(list: T[], n: number): T[] {
 }
 
 // a function to pick n random symbols from the symbols data
-const symbolsList = Object.keys(symbols);
+const symbolsList = symbols;
 
 function pickRandomTickers(n: number): string[] {
   return pickRandomUniqueStrings(symbolsList, n);
