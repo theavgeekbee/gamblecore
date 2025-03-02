@@ -1,6 +1,7 @@
 "use client";
 
 import {useEffect, useRef, useState} from "react";
+import {global_vars} from "@/utils/global";
 
 export enum TradeType {
     BUY, SELL
@@ -44,8 +45,10 @@ export function SkibidiTerminal(
             try {
                 const response = await fetch("http://localhost:5000/stock?ticker=AAPL"); // Replace with actual API endpoint
                 let normal_data = await response.json();
-                data = serializeHistoricalData(normal_data['historical_data']);
-
+                global_vars.current_price = normal_data['current_price'];
+                let historical_data = normal_data['historical_data'];
+                let offset_data = historical_data.slice(0, historical_data.length - global_vars.offset--);
+                data = serializeHistoricalData(offset_data);
             } catch (error) {
                 console.error("Error fetching candlestick data:", error);
             }
@@ -150,8 +153,8 @@ export function SkibidiTerminal(
 
         setTimeout(() => {
             draw();
-            setInterval(draw, 60000);
-        }, 2000);
+            setInterval(draw, 1000);
+        }, 5000);
     }, []);
 
     return <canvas ref={canvasRef} width={700} height={500}/>;

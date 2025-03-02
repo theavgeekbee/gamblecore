@@ -15,11 +15,11 @@ def get_stock_data():
     if not ticker:
         return jsonify({"error": "Ticker symbol is required"}), 400
 
-    end_date = datetime.today() - timedelta(days=5)
+    end_date = datetime.today()
 
     stock = yf.Ticker(ticker)
     stock_info = stock.info
-    hist = stock.history(period="5d", interval="1m", end=end_date.timestamp())
+    hist = stock.history(period="10d", interval="1m")
 
     historical_data = [
             {"open": row["Open"], "high": row["High"], "low": row["Low"], "close": row["Close"]}
